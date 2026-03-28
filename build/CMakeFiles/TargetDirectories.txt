@@ -1,0 +1,3 @@
+/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/RTOS.dir
+/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/edit_cache.dir
+/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/rebuild_cache.dir

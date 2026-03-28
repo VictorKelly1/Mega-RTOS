@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/victorkelly1/C++/practicas/RTOS/build",
+  "command": "avr-g++ -DF_CPU=16000000UL -I/home/victorkelly1/C++/practicas/RTOS/include -mmcu=atmega328p -Os -o CMakeFiles/RTOS.dir/src/main.cpp.o -c /home/victorkelly1/C++/practicas/RTOS/src/main.cpp",
+  "file": "/home/victorkelly1/C++/practicas/RTOS/src/main.cpp",
+  "output": "CMakeFiles/RTOS.dir/src/main.cpp.o"
+}
+]
