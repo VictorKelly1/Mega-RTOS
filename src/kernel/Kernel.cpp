@@ -3,9 +3,7 @@
 
 #include "kernel/Kernel.hpp"
 
-extern "C" void switchContextASM(Process* current, Process* next);
-
-
+extern "C" void switchContextASM(uint8_t* current, uint8_t* next);
 
 void Kernel::switchContext(Process* next)
 {
@@ -13,10 +11,11 @@ void Kernel::switchContext(Process* next)
 
     m_currentProcess = next;
 
-    switchContextASM(current, next);
+    switchContextASM(
+        (uint8_t*)current->getSPaddress(),
+        (uint8_t*)next->getSPaddress()
+    );
 }
-
-
 
 void Kernel::initTimer0()
 {
@@ -40,20 +39,13 @@ void Kernel::initTimer0()
 
     sei();
 }
-
-
-
 ISR(TIMER0_COMPA_vect)
 {
     Kernel::getInstance().scheduler();
 }
 
-
-
 void Kernel::scheduler()
 {
-    if (m_processCount < 2) return;
-
     if (m_currentProcess == &m_PCB[0])
     {
         switchContext(&m_PCB[1]);
@@ -64,8 +56,6 @@ void Kernel::scheduler()
     }
 }
 
-
-
 void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
 {
     if (m_processCount >= MAX_PROCESSES)
@@ -74,34 +64,31 @@ void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
     m_PCB[m_processCount].init(taskFunction, priority);
 
     m_processCount++;
+
 }
 
-
-
-void Kernel::start()
-{
-    if (m_processCount == 0)
-        return;
+void Kernel::start() {
+    if (m_processCount == 0) return;
 
     m_currentProcess = &m_PCB[0];
+    
+    // Init the Timer0 but SEI will activate when  
+    // we restore the SREG of the first task that has 0x80 
+    initTimer0(); 
 
-    initTimer0();
-
-    sei();
-
-    switchContext(m_currentProcess);
+    // Jump to first task 
+    // Give m_sp to the firat task to the switch context in ASM 
+    uint8_t* dummySP; 
+    switchContextASM((uint8_t*)&dummySP, (uint8_t*)m_currentProcess->getSPaddress());
 }
-
-
 
 Kernel Kernel::instance;
 
 Kernel& Kernel::getInstance()
 {
+
     return instance;
 }
-
-
 
 Kernel::Kernel()
 {

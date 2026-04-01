@@ -42,6 +42,7 @@ public:
 
   // Getters and Setters
   uint8_t* getSP() const { return m_sp; }
+  uint8_t** getSPaddress() {return &m_sp; }             //ptr to ptr
   void setSP(uint8_t* sp) { m_sp = sp; }
 
   uint8_t getPID() const { return m_pid; }

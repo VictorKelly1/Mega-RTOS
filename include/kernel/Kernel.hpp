@@ -44,6 +44,6 @@ private:
     uint8_t m_processCount{0};
 };
 
-extern "C" void switchContextASM(Process* current, Process* next);
+extern "C" void switchContextASM(uint8_t* currentSP, uint8_t* nextSP);
 
 #endif

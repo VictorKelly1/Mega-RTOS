@@ -1,20 +1,22 @@
-.equ SREG, 0x3F
-.equ SPL, 0x5D
-.equ SPH, 0x5E
-
+.section .text
 .global switchContextASM
-.type switchContextASM, @function
 
+//Register definitions of I/O for ATmega328P
+.equ SREG, 0x3F
+.equ SPL,  0x3D
+.equ SPH,  0x3E
 
 switchContextASM:
+    // r24:r25 -> Address of current->m_sp
+    // r22:r23 -> Address of next->m_sp
 
-
+    //Save current context 
     push r0
-    in   r0, SREG
-    cli
+    in   r0, SREG       //Save interrupts state and flags
     push r0
-
     push r1
+    clr  r1             //CLear register 1 C++ requirement 
+    
     push r2
     push r3
     push r4
@@ -46,27 +48,23 @@ switchContextASM:
     push r30
     push r31
 
+    //Save stack pointer in the process that is going out 
+    // X (r26:r27) now is the address in m_sp
+    movw r26, r24
+    in   r0, SPL
+    st   X+, r0
+    in   r0, SPH
+    st   X, r0
 
-    mov r26, r24
-    mov r27, r25
+    // Load the new stack pointer 
+    // X (r26:r27) now is the m_sp dof the next process
+    movw r26, r22
+    ld   r0, X+
+    out  SPL, r0        //Load low byte to hardware
+    ld   r0, X
+    out  SPH, r0        //Load high byte to hardware
 
-    lds r0, SPL
-    st  X+, r0
-
-    lds r0, SPH
-    st  X, r0
-
-
-    mov r26, r22
-    mov r27, r23
-
-    ld r28, X+
-    ld r29, X
-
-    sts SPL, r28
-    sts SPH, r29
-
-
+    //Load new context 
     pop r31
     pop r30
     pop r29
@@ -97,11 +95,11 @@ switchContextASM:
     pop r4
     pop r3
     pop r2
+    
     pop r1
-
     pop r0
-    out SREG, r0
+    out SREG, r0        
     pop r0
 
-    ret
+    ret                 //Jump to the address stores in the new stack
 

@@ -11,29 +11,33 @@ void Process::init(TaskFunction task, uint8_t priority)
 
     m_priority = priority;
 
-    m_pid = PID++;
+    m_pid = ++PID;
 
     m_state = State::READY;
 
     stackInit();
 }
 
-void Process::stackInit(){
+void Process::stackInit()
+{
+    m_sp = &m_stack[STACK_SIZE - 1];
 
-  m_sp = &m_stack[STACK_SIZE - 1];
+    uint16_t funcPtr = reinterpret_cast<uint16_t>(m_task);              //change m_task type from 1 to 2 bytes bcs asm needs it 
 
-  uint16_t funcPtr = reinterpret_cast<uint16_t>(m_task); //Pointer to the task
+    // store return address 
+    // Harware loads PC: PC Low then PC High 
+    *m_sp-- = (uint8_t)(funcPtr & 0xFF);         // PC Low    (PC is program counter)
+    *m_sp-- = (uint8_t)((funcPtr >> 8) & 0xFF);  // PC High
 
-  *m_sp-- = (uint8_t)( funcPtr & 0xFF);                  //Write in m_sp adress, then decrement the adress and extract low bit  
-  *m_sp-- = (uint8_t)((funcPtr >> 8) & 0xFF);             
+    // Registers that switchContextASM will take out 'pop'
+    *m_sp-- = 0x00; // R0
+    *m_sp-- = 0x80; // SREG 0x80 has interrupts 
+    *m_sp-- = 0x00; // R1 is 0 register of C++
 
-  *m_sp-- = 0x80;                                        //Activate interruptioins 
-
-  for (uint8_t index {}; index < 32; ++index){           
+    for (uint8_t i = 2; i <= 31; ++i)
+    {
         *m_sp-- = 0x00;
-  }
-
-  ++m_sp; 
+    }
 }
 
 //Constructor definitions

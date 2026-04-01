@@ -5,7 +5,8 @@ CMakeFiles/RTOS.dir/src/main.cpp.obj: \
  /usr/lib/avr/include/stdint.h /usr/lib/avr/include/avr/iom328p.h \
  /usr/lib/avr/include/avr/portpins.h /usr/lib/avr/include/avr/common.h \
  /usr/lib/avr/include/avr/version.h /usr/lib/avr/include/avr/fuse.h \
- /usr/lib/avr/include/avr/lock.h \
+ /usr/lib/avr/include/avr/lock.h /usr/lib/avr/include/util/delay.h \
+ /usr/lib/avr/include/util/delay_basic.h /usr/lib/avr/include/math.h \
  /home/victorkelly1/C++/practicas/RTOS/include/kernel/Kernel.hpp \
  /home/victorkelly1/C++/practicas/RTOS/include/kernel/Process.hpp \
  /usr/lib/gcc/avr/7.3.0/include/stddef.h
