@@ -32,11 +32,12 @@ private:
 
 public:
   // Constructor
-  Process() = delete;
+  Process() = default;
 
   Process(TaskFunction task, uint8_t priority);
 
   //Member Fucntions
+  void init(TaskFunction task, uint8_t priority);
   void stackInit();
 
   // Getters and Setters

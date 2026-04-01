@@ -4,6 +4,20 @@
 uint8_t Process::PID{0};
 
 //Function definitions 
+
+void Process::init(TaskFunction task, uint8_t priority)
+{
+    m_task = task;
+
+    m_priority = priority;
+
+    m_pid = PID++;
+
+    m_state = State::READY;
+
+    stackInit();
+}
+
 void Process::stackInit(){
 
   m_sp = &m_stack[STACK_SIZE - 1];

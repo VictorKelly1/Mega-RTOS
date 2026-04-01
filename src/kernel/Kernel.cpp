@@ -1,12 +1,17 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#include "kernel/Kernel.hpp" 
+#include "kernel/Kernel.hpp"
 
-//Function definitions
 extern "C" void switchContextASM(Process* current, Process* next);
-void Kernel::switchContext(Process* next){
 
+
+//------------------------------------------------
+// Context Switch
+//------------------------------------------------
+
+void Kernel::switchContext(Process* next)
+{
     Process* current = m_currentProcess;
 
     m_currentProcess = next;
@@ -14,68 +19,117 @@ void Kernel::switchContext(Process* next){
     switchContextASM(current, next);
 }
 
-void Kernel::initTimer0(){
-    cli();                                                                          //Disable interruptions 
 
-    TCCR0A = 0;                                                                     //Clean timer's registers
-    TCCR0B = 0;                                             
+//------------------------------------------------
+// Timer0 init (1ms tick)
+//------------------------------------------------
 
-    TCCR0A |= (1 << WGM01);                                                         //Register clear time comparing match mode (resete register when comparation is true with OCR0A)
-    TCCR0B |= (1 << CS01) | (1 << CS00);                                            //Prescaler at 64 for calculate 1ms whit 250,000Hz 
-    //(16 Mhz / 64 = 250000 Hz) / 1000 = 250 
-    OCR0A = 249;                                                                    //249 because start in 0 
+void Kernel::initTimer0()
+{
+    cli();
 
+    TCCR0A = 0;
+    TCCR0B = 0;
+
+    // CTC Mode
+    TCCR0A |= (1 << WGM01);
+
+    // Prescaler 64
+    TCCR0B |= (1 << CS01) | (1 << CS00);
+
+    // 16MHz / 64 = 250000 Hz
+    // 250000 / 1000 = 250 ticks
+    OCR0A = 249;
+
+    // Enable interrupt
     TIMSK0 |= (1 << OCIE0A);
 
     sei();
 }
-ISR(TIMER0_COMPA_vect){                                                             //Call sched 1 time per ms 
+
+
+//------------------------------------------------
+// Timer interrupt
+//------------------------------------------------
+
+ISR(TIMER0_COMPA_vect)
+{
     Kernel::getInstance().scheduler();
 }
 
-void Kernel::scheduler(){
-    if (m_currentProcess == m_PCB[0])
+
+//------------------------------------------------
+// Scheduler (test with 2 processes)
+//------------------------------------------------
+
+void Kernel::scheduler()
+{
+    if (m_processCount < 2) return;
+
+    if (m_currentProcess == &m_PCB[0])
     {
-        switchContext(m_PCB[1]);
+        switchContext(&m_PCB[1]);
     }
     else
     {
-        switchContext(m_PCB[0]);
+        switchContext(&m_PCB[0]);
     }
 }
 
-void Kernel::createTask(void (*taskFunction)(), uint8_t priority){
-    if(m_processCount >= MAX_PROCESSES) return; 
 
-    //Create and add a process to list 
-    Process* newProcess = new Process(taskFunction, priority);
+//------------------------------------------------
+// Task creation
+//------------------------------------------------
 
-    m_PCB[m_processCount] = newProcess;
+void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
+{
+    if (m_processCount >= MAX_PROCESSES)
+        return;
 
-    ++m_processCount;
+    m_PCB[m_processCount].init(taskFunction, priority);
+
+    m_processCount++;
 }
 
-void Kernel::start(){
-    if(m_processCount <= 0) return;
 
-    m_currentProcess = m_PCB[0];
+//------------------------------------------------
+// Start Kernel
+//------------------------------------------------
 
-    sei();                                                                              //enable interruptions
+void Kernel::start()
+{
+    if (m_processCount == 0)
+        return;
+
+    m_currentProcess = &m_PCB[0];
+
     initTimer0();
+
+    sei();
+
+    // comenzar ejecutando el primer proceso
+    switchContext(m_currentProcess);
 }
 
-//Singlenton instance 
-Kernel& Kernel::getInstance(){
-    static Kernel instance{};
+
+//------------------------------------------------
+// Singleton
+//------------------------------------------------
+
+Kernel Kernel::instance;
+
+Kernel& Kernel::getInstance()
+{
     return instance;
 }
 
-//Constructor definitions
-Kernel::Kernel(){
+
+//------------------------------------------------
+// Constructor
+//------------------------------------------------
+
+Kernel::Kernel()
+{
     m_currentProcess = nullptr;
     m_processCount = 0;
-    
-    for (uint8_t index {}; index < MAX_PROCESSES; ++index){
-        m_PCB[index] = nullptr;
-    }
 }

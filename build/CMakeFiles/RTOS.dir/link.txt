@@ -1,1 +1,1 @@
-avr-g++ -mmcu=atmega328p CMakeFiles/RTOS.dir/src/main.cpp.o -o RTOS 
+/usr/bin/avr-g++ -mmcu=atmega328p CMakeFiles/RTOS.dir/src/main.cpp.obj CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj -o RTOS 

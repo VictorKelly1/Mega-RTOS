@@ -129,13 +129,69 @@ RTOS/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/build
 .PHONY : RTOS/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+include/procedures/switchContextASM.obj: include/procedures/switchContextASM.S.obj
+.PHONY : include/procedures/switchContextASM.obj
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+include/procedures/switchContextASM.S.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj
+.PHONY : include/procedures/switchContextASM.S.obj
+
+src/kernel/Kernel.obj: src/kernel/Kernel.cpp.obj
+.PHONY : src/kernel/Kernel.obj
+
+# target to build an object file
+src/kernel/Kernel.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj
+.PHONY : src/kernel/Kernel.cpp.obj
+
+src/kernel/Kernel.i: src/kernel/Kernel.cpp.i
+.PHONY : src/kernel/Kernel.i
+
+# target to preprocess a source file
+src/kernel/Kernel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.i
+.PHONY : src/kernel/Kernel.cpp.i
+
+src/kernel/Kernel.s: src/kernel/Kernel.cpp.s
+.PHONY : src/kernel/Kernel.s
+
+# target to generate assembly for a file
+src/kernel/Kernel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.s
+.PHONY : src/kernel/Kernel.cpp.s
+
+src/kernel/Process.obj: src/kernel/Process.cpp.obj
+.PHONY : src/kernel/Process.obj
+
+# target to build an object file
+src/kernel/Process.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj
+.PHONY : src/kernel/Process.cpp.obj
+
+src/kernel/Process.i: src/kernel/Process.cpp.i
+.PHONY : src/kernel/Process.i
+
+# target to preprocess a source file
+src/kernel/Process.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/kernel/Process.cpp.i
+.PHONY : src/kernel/Process.cpp.i
+
+src/kernel/Process.s: src/kernel/Process.cpp.s
+.PHONY : src/kernel/Process.s
+
+# target to generate assembly for a file
+src/kernel/Process.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/kernel/Process.cpp.s
+.PHONY : src/kernel/Process.cpp.s
+
+src/main.obj: src/main.cpp.obj
+.PHONY : src/main.obj
+
+# target to build an object file
+src/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RTOS.dir/build.make CMakeFiles/RTOS.dir/src/main.cpp.obj
+.PHONY : src/main.cpp.obj
 
 src/main.i: src/main.cpp.i
 .PHONY : src/main.i
@@ -162,7 +218,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RTOS"
-	@echo "... src/main.o"
+	@echo "... include/procedures/switchContextASM.obj"
+	@echo "... src/kernel/Kernel.obj"
+	@echo "... src/kernel/Kernel.i"
+	@echo "... src/kernel/Kernel.s"
+	@echo "... src/kernel/Process.obj"
+	@echo "... src/kernel/Process.i"
+	@echo "... src/kernel/Process.s"
+	@echo "... src/main.obj"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 .PHONY : help

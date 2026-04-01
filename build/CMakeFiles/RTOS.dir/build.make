@@ -69,31 +69,78 @@ include CMakeFiles/RTOS.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/RTOS.dir/flags.make
 
-CMakeFiles/RTOS.dir/src/main.cpp.o: CMakeFiles/RTOS.dir/flags.make
-CMakeFiles/RTOS.dir/src/main.cpp.o: /home/victorkelly1/C++/practicas/RTOS/src/main.cpp
-CMakeFiles/RTOS.dir/src/main.cpp.o: CMakeFiles/RTOS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/RTOS.dir/src/main.cpp.o"
-	avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RTOS.dir/src/main.cpp.o -MF CMakeFiles/RTOS.dir/src/main.cpp.o.d -o CMakeFiles/RTOS.dir/src/main.cpp.o -c /home/victorkelly1/C++/practicas/RTOS/src/main.cpp
+CMakeFiles/RTOS.dir/src/main.cpp.obj: CMakeFiles/RTOS.dir/flags.make
+CMakeFiles/RTOS.dir/src/main.cpp.obj: /home/victorkelly1/C++/practicas/RTOS/src/main.cpp
+CMakeFiles/RTOS.dir/src/main.cpp.obj: CMakeFiles/RTOS.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/RTOS.dir/src/main.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RTOS.dir/src/main.cpp.obj -MF CMakeFiles/RTOS.dir/src/main.cpp.obj.d -o CMakeFiles/RTOS.dir/src/main.cpp.obj -c /home/victorkelly1/C++/practicas/RTOS/src/main.cpp
 
 CMakeFiles/RTOS.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RTOS.dir/src/main.cpp.i"
-	avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victorkelly1/C++/practicas/RTOS/src/main.cpp > CMakeFiles/RTOS.dir/src/main.cpp.i
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victorkelly1/C++/practicas/RTOS/src/main.cpp > CMakeFiles/RTOS.dir/src/main.cpp.i
 
 CMakeFiles/RTOS.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RTOS.dir/src/main.cpp.s"
-	avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victorkelly1/C++/practicas/RTOS/src/main.cpp -o CMakeFiles/RTOS.dir/src/main.cpp.s
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victorkelly1/C++/practicas/RTOS/src/main.cpp -o CMakeFiles/RTOS.dir/src/main.cpp.s
+
+CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj: CMakeFiles/RTOS.dir/flags.make
+CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj: /home/victorkelly1/C++/practicas/RTOS/src/kernel/Kernel.cpp
+CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj: CMakeFiles/RTOS.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj -MF CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj.d -o CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj -c /home/victorkelly1/C++/practicas/RTOS/src/kernel/Kernel.cpp
+
+CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victorkelly1/C++/practicas/RTOS/src/kernel/Kernel.cpp > CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.i
+
+CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victorkelly1/C++/practicas/RTOS/src/kernel/Kernel.cpp -o CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.s
+
+CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj: CMakeFiles/RTOS.dir/flags.make
+CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj: /home/victorkelly1/C++/practicas/RTOS/src/kernel/Process.cpp
+CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj: CMakeFiles/RTOS.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj -MF CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj.d -o CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj -c /home/victorkelly1/C++/practicas/RTOS/src/kernel/Process.cpp
+
+CMakeFiles/RTOS.dir/src/kernel/Process.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RTOS.dir/src/kernel/Process.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victorkelly1/C++/practicas/RTOS/src/kernel/Process.cpp > CMakeFiles/RTOS.dir/src/kernel/Process.cpp.i
+
+CMakeFiles/RTOS.dir/src/kernel/Process.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RTOS.dir/src/kernel/Process.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victorkelly1/C++/practicas/RTOS/src/kernel/Process.cpp -o CMakeFiles/RTOS.dir/src/kernel/Process.cpp.s
+
+CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj: CMakeFiles/RTOS.dir/flags.make
+CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj: /home/victorkelly1/C++/practicas/RTOS/include/procedures/switchContextASM.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building ASM object CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj"
+	/usr/bin/avr-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj -c /home/victorkelly1/C++/practicas/RTOS/include/procedures/switchContextASM.S
+
+CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.i"
+	/usr/bin/avr-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/victorkelly1/C++/practicas/RTOS/include/procedures/switchContextASM.S > CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.i
+
+CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.s"
+	/usr/bin/avr-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/victorkelly1/C++/practicas/RTOS/include/procedures/switchContextASM.S -o CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.s
 
 # Object files for target RTOS
 RTOS_OBJECTS = \
-"CMakeFiles/RTOS.dir/src/main.cpp.o"
+"CMakeFiles/RTOS.dir/src/main.cpp.obj" \
+"CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj" \
+"CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj" \
+"CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj"
 
 # External object files for target RTOS
 RTOS_EXTERNAL_OBJECTS =
 
-RTOS: CMakeFiles/RTOS.dir/src/main.cpp.o
+RTOS: CMakeFiles/RTOS.dir/src/main.cpp.obj
+RTOS: CMakeFiles/RTOS.dir/src/kernel/Kernel.cpp.obj
+RTOS: CMakeFiles/RTOS.dir/src/kernel/Process.cpp.obj
+RTOS: CMakeFiles/RTOS.dir/include/procedures/switchContextASM.S.obj
 RTOS: CMakeFiles/RTOS.dir/build.make
 RTOS: CMakeFiles/RTOS.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable RTOS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable RTOS"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RTOS.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

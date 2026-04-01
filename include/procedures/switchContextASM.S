@@ -1,14 +1,18 @@
-.global contextSwitchASM
-.type   contextSwitchASM, @function 
+.equ SREG, 0x3F
+.equ SPL, 0x5D
+.equ SPH, 0x5E
 
-;current process is r24:r25 and next is r22;r23 
+.global switchContextASM
+.type switchContextASM, @function
 
-contextSwitchASM:
-   ;Save context of current process
-    push r0                                     
-    in   r0, __SREG__                           
-    cli                                         
-    push r0                                     
+
+switchContextASM:
+
+
+    push r0
+    in   r0, SREG
+    cli
+    push r0
 
     push r1
     push r2
@@ -42,27 +46,27 @@ contextSwitchASM:
     push r30
     push r31
 
-   ;Save stack pointer in current->m_sp;
+
     mov r26, r24
-    mov r27, r25 
-   
-    in r0, __SP_L__
-    st X+, r0 
+    mov r27, r25
 
-    in r0, __SP_H__
-    st X, r0 
+    lds r0, SPL
+    st  X+, r0
 
-   ;load stack pointer next->m_sp;
+    lds r0, SPH
+    st  X, r0
+
+
     mov r26, r22
     mov r27, r23
 
     ld r28, X+
-    ld r29, X 
+    ld r29, X
 
-    out __SP_L__, r28 
-    out __SP_H__, r29 
+    sts SPL, r28
+    sts SPH, r29
 
-   ;Reload new context 
+
     pop r31
     pop r30
     pop r29
@@ -96,7 +100,8 @@ contextSwitchASM:
     pop r1
 
     pop r0
-    out __SREG__, r0
+    out SREG, r0
     pop r0
 
-   ret
+    ret
+

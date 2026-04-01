@@ -4,20 +4,21 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
-      - "CMakeLists.txt:2 (project)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:228 (message)"
+      - "CMakeLists.txt:9 (project)"
     message: |
-      The system is: Linux - 6.17.0-14-generic - x86_64
+      The target system is: Generic -  - 
+      The host system is: Linux - 6.17.0-14-generic - x86_64
   -
     kind: "message-v1"
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-      Compiler: /usr/bin/cc 
+      Compiler: /usr/bin/avr-gcc 
       Build flags: 
       Id flags:  
       
@@ -36,10 +37,10 @@ events:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-      Compiler: /usr/bin/c++ 
+      Compiler: /usr/bin/avr-g++ 
       Build flags: 
       Id flags:  
       
@@ -53,16 +54,29 @@ events:
         /home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/3.28.3/CompilerIdCXX/a.out
       
   -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1131 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      avr-gcc (GCC) 7.3.0
+      Copyright (C) 2017 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
     kind: "try_compile-v1"
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY"
-      binary: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY"
+      source: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4"
+      binary: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -71,65 +85,58 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY'
+        Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_76773/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_76773.dir/build.make CMakeFiles/cmTC_76773.dir/build
-        gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY'
-        Building C object CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -v -o CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_64871/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_64871.dir/build.make CMakeFiles/cmTC_64871.dir/build
+        gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4'
+        Building C object CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj
+        /usr/bin/avr-gcc   -v -o CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Using built-in specs.
-        COLLECT_GCC=/usr/bin/cc
-        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-        OFFLOAD_TARGET_DEFAULT=1
-        Target: x86_64-linux-gnu
-        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
-        Thread model: posix
-        Supported LTO compression algorithms: zlib zstd
-        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_76773.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_76773.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc7hCnWR.s
-        GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)
-        	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
-        
+        Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2
+        COLLECT_GCC=/usr/bin/avr-gcc
+        Target: avr
+        Configured with: ../gcc/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2'
+        Thread model: single
+        gcc version 7.3.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj' '-c' '-specs=device-specs/specs-avr2'
+         /usr/lib/gcc/avr/7.3.0/cc1 -quiet -v /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -mn-flash=1 -mskip-bug -quiet -dumpbase CMakeCCompilerABI.c -auxbase-strip CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj -version -o /tmp/cchEBTvS.s
+        GNU C11 (GCC) version 7.3.0 (avr)
+        	compiled by GNU C version 13.2.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version none
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
-        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"
-        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"
-        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
+        ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/sys-include"
         #include "..." search starts here:
         #include <...> search starts here:
-         /usr/lib/gcc/x86_64-linux-gnu/13/include
-         /usr/local/include
-         /usr/include/x86_64-linux-gnu
-         /usr/include
+         /usr/lib/gcc/avr/7.3.0/include
+         /usr/lib/gcc/avr/7.3.0/include-fixed
+         /usr/lib/gcc/avr/7.3.0/../../../avr/include
         End of search list.
-        Compiler executable checksum: b220a7f1a1f69970d969d254ad9ec166
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_76773.dir/'
-         as -v --64 -o CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o /tmp/cc7hCnWR.s
-        GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
-        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
-        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_76773
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76773.dir/link.txt --verbose=1
-        /usr/bin/cc  -v CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o -o cmTC_76773 
+        GNU C11 (GCC) version 7.3.0 (avr)
+        	compiled by GNU C version 13.2.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version none
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: d424640f146a9b01cb085bf03b2e9b9d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj' '-c' '-specs=device-specs/specs-avr2'
+         /usr/lib/gcc/avr/7.3.0/../../../avr/bin/as -mmcu=avr2 -o CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj /tmp/cchEBTvS.s
+        COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/
+        LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj' '-c' '-specs=device-specs/specs-avr2'
+        Linking C executable cmTC_64871
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_64871.dir/link.txt --verbose=1
+        /usr/bin/avr-gcc  -v CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj -o cmTC_64871 
         Using built-in specs.
-        COLLECT_GCC=/usr/bin/cc
-        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
-        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-        OFFLOAD_TARGET_DEFAULT=1
-        Target: x86_64-linux-gnu
-        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
-        Thread model: posix
-        Supported LTO compression algorithms: zlib zstd
-        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
-        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
-        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_76773' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_76773.'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cczRzQiO.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_76773 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_76773' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_76773.'
-        gmake[1]: Leaving directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY'
+        Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2
+        COLLECT_GCC=/usr/bin/avr-gcc
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/7.3.0/lto-wrapper
+        Target: avr
+        Configured with: ../gcc/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2'
+        Thread model: single
+        gcc version 7.3.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/
+        LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_64871' '-specs=device-specs/specs-avr2'
+         /usr/lib/gcc/avr/7.3.0/collect2 -plugin /usr/lib/gcc/avr/7.3.0/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc33Oism.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc --pmem-wrap-around=8k -o cmTC_64871 -L/usr/lib/gcc/avr/7.3.0 -L/usr/lib/gcc/avr/7.3.0/../../../avr/lib CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lm -lc --end-group
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_64871' '-specs=device-specs/specs-avr2'
+        gmake[1]: Leaving directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4'
         
       exitCode: 0
   -
@@ -137,21 +144,19 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
       - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     message: |
       Parsed C implicit include dir info: rv=done
         found start of include info
         found start of implicit include info
-          add: [/usr/lib/gcc/x86_64-linux-gnu/13/include]
-          add: [/usr/local/include]
-          add: [/usr/include/x86_64-linux-gnu]
-          add: [/usr/include]
+          add: [/usr/lib/gcc/avr/7.3.0/include]
+          add: [/usr/lib/gcc/avr/7.3.0/include-fixed]
+          add: [/usr/lib/gcc/avr/7.3.0/../../../avr/include]
         end of search list found
-        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/13/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/13/include]
-        collapse include dir [/usr/local/include] ==> [/usr/local/include]
-        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
-        collapse include dir [/usr/include] ==> [/usr/include]
-        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/13/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+        collapse include dir [/usr/lib/gcc/avr/7.3.0/include] ==> [/usr/lib/gcc/avr/7.3.0/include]
+        collapse include dir [/usr/lib/gcc/avr/7.3.0/include-fixed] ==> [/usr/lib/gcc/avr/7.3.0/include-fixed]
+        collapse include dir [/usr/lib/gcc/avr/7.3.0/../../../avr/include] ==> [/usr/lib/avr/include]
+        implicit include dirs: [/usr/lib/gcc/avr/7.3.0/include;/usr/lib/gcc/avr/7.3.0/include-fixed;/usr/lib/avr/include]
       
       
   -
@@ -159,129 +164,84 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
       - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     message: |
       Parsed C implicit link information:
-        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY']
+        link line regex: [^( *|.*[/\\])(avr-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_76773/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_76773.dir/build.make CMakeFiles/cmTC_76773.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-bcLLXY']
-        ignore line: [Building C object CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_64871/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_64871.dir/build.make CMakeFiles/cmTC_64871.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-F6LKE4']
+        ignore line: [Building C object CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/usr/bin/avr-gcc   -v -o CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
-        ignore line: [COLLECT_GCC=/usr/bin/cc]
-        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-        ignore line: [Target: x86_64-linux-gnu]
-        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
-        ignore line: [Thread model: posix]
-        ignore line: [Supported LTO compression algorithms: zlib zstd]
-        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_76773.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_76773.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc7hCnWR.s]
-        ignore line: [GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)]
-        ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
-        ignore line: []
+        ignore line: [Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2]
+        ignore line: [COLLECT_GCC=/usr/bin/avr-gcc]
+        ignore line: [Target: avr]
+        ignore line: [Configured with: ../gcc/configure -v --enable-languages=c c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl -Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl -z relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2']
+        ignore line: [Thread model: single]
+        ignore line: [gcc version 7.3.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj' '-c' '-specs=device-specs/specs-avr2']
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/cc1 -quiet -v /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -mn-flash=1 -mskip-bug -quiet -dumpbase CMakeCCompilerABI.c -auxbase-strip CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj -version -o /tmp/cchEBTvS.s]
+        ignore line: [GNU C11 (GCC) version 7.3.0 (avr)]
+        ignore line: [	compiled by GNU C version 13.2.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version none]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
-        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"]
-        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"]
-        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/sys-include"]
         ignore line: [#include "..." search starts here:]
         ignore line: [#include <...> search starts here:]
-        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/13/include]
-        ignore line: [ /usr/local/include]
-        ignore line: [ /usr/include/x86_64-linux-gnu]
-        ignore line: [ /usr/include]
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/include]
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/include-fixed]
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/../../../avr/include]
         ignore line: [End of search list.]
-        ignore line: [Compiler executable checksum: b220a7f1a1f69970d969d254ad9ec166]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_76773.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o /tmp/cc7hCnWR.s]
-        ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
-        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
-        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_76773]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76773.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o -o cmTC_76773 ]
+        ignore line: [GNU C11 (GCC) version 7.3.0 (avr)]
+        ignore line: [	compiled by GNU C version 13.2.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version none]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: d424640f146a9b01cb085bf03b2e9b9d]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj' '-c' '-specs=device-specs/specs-avr2']
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/../../../avr/bin/as -mmcu=avr2 -o CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj /tmp/cchEBTvS.s]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj' '-c' '-specs=device-specs/specs-avr2']
+        ignore line: [Linking C executable cmTC_64871]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_64871.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/avr-gcc  -v CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj -o cmTC_64871 ]
         ignore line: [Using built-in specs.]
-        ignore line: [COLLECT_GCC=/usr/bin/cc]
-        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
-        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-        ignore line: [Target: x86_64-linux-gnu]
-        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
-        ignore line: [Thread model: posix]
-        ignore line: [Supported LTO compression algorithms: zlib zstd]
-        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
-        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
-        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_76773' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_76773.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cczRzQiO.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_76773 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
-          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
+        ignore line: [Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2]
+        ignore line: [COLLECT_GCC=/usr/bin/avr-gcc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/7.3.0/lto-wrapper]
+        ignore line: [Target: avr]
+        ignore line: [Configured with: ../gcc/configure -v --enable-languages=c c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl -Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl -z relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2']
+        ignore line: [Thread model: single]
+        ignore line: [gcc version 7.3.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_64871' '-specs=device-specs/specs-avr2']
+        link line: [ /usr/lib/gcc/avr/7.3.0/collect2 -plugin /usr/lib/gcc/avr/7.3.0/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc33Oism.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc --pmem-wrap-around=8k -o cmTC_64871 -L/usr/lib/gcc/avr/7.3.0 -L/usr/lib/gcc/avr/7.3.0/../../../avr/lib CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lm -lc --end-group]
+          arg [/usr/lib/gcc/avr/7.3.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
-          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
-          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cczRzQiO.res] ==> ignore
+          arg [/usr/lib/gcc/avr/7.3.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/avr/7.3.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc33Oism.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lm] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
-          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-          arg [--build-id] ==> ignore
-          arg [--eh-frame-hdr] ==> ignore
-          arg [-m] ==> ignore
-          arg [elf_x86_64] ==> ignore
-          arg [--hash-style=gnu] ==> ignore
-          arg [--as-needed] ==> ignore
-          arg [-dynamic-linker] ==> ignore
-          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-          arg [-pie] ==> ignore
-          arg [-znow] ==> ignore
-          arg [-zrelro] ==> ignore
+          arg [--pmem-wrap-around=8k] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_76773] ==> ignore
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib]
-          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-          arg [-L/lib/../lib] ==> dir [/lib/../lib]
-          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
-          arg [CMakeFiles/cmTC_76773.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [cmTC_64871] ==> ignore
+          arg [-L/usr/lib/gcc/avr/7.3.0] ==> dir [/usr/lib/gcc/avr/7.3.0]
+          arg [-L/usr/lib/gcc/avr/7.3.0/../../../avr/lib] ==> dir [/usr/lib/gcc/avr/7.3.0/../../../avr/lib]
+          arg [CMakeFiles/cmTC_64871.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [--start-group] ==> ignore
           arg [-lgcc] ==> lib [gcc]
-          arg [--push-state] ==> ignore
-          arg [--as-needed] ==> ignore
-          arg [-lgcc_s] ==> lib [gcc_s]
-          arg [--pop-state] ==> ignore
+          arg [-lm] ==> lib [m]
           arg [-lc] ==> lib [c]
-          arg [-lgcc] ==> lib [gcc]
-          arg [--push-state] ==> ignore
-          arg [--as-needed] ==> ignore
-          arg [-lgcc_s] ==> lib [gcc_s]
-          arg [--pop-state] ==> ignore
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
-        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
-        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
-        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13] ==> [/usr/lib/gcc/x86_64-linux-gnu/13]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> [/usr/lib]
-        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-        collapse library dir [/lib/../lib] ==> [/lib]
-        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> [/usr/lib]
-        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
-        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
-        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/13;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+          arg [--end-group] ==> ignore
+        collapse library dir [/usr/lib/gcc/avr/7.3.0] ==> [/usr/lib/gcc/avr/7.3.0]
+        collapse library dir [/usr/lib/gcc/avr/7.3.0/../../../avr/lib] ==> [/usr/lib/avr/lib]
+        implicit libs: [gcc;m;c]
+        implicit objs: []
+        implicit dirs: [/usr/lib/gcc/avr/7.3.0;/usr/lib/avr/lib]
         implicit fwks: []
       
       
@@ -290,12 +250,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql"
-      binary: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql"
+      source: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo"
+      binary: "/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -304,69 +264,61 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql'
+        Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e0983/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_e0983.dir/build.make CMakeFiles/cmTC_e0983.dir/build
-        gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql'
-        Building CXX object CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -v -o CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d4717/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d4717.dir/build.make CMakeFiles/cmTC_d4717.dir/build
+        gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo'
+        Building CXX object CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj
+        /usr/bin/avr-g++   -v -o CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
-        COLLECT_GCC=/usr/bin/c++
-        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-        OFFLOAD_TARGET_DEFAULT=1
-        Target: x86_64-linux-gnu
-        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
-        Thread model: posix
-        Supported LTO compression algorithms: zlib zstd
-        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e0983.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_e0983.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc2vWYuS.s
-        GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)
-        	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
-        
+        Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2
+        COLLECT_GCC=/usr/bin/avr-g++
+        Target: avr
+        Configured with: ../gcc/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2'
+        Thread model: single
+        gcc version 7.3.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-specs=device-specs/specs-avr2'
+         /usr/lib/gcc/avr/7.3.0/cc1plus -quiet -v /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -mn-flash=1 -mskip-bug -quiet -dumpbase CMakeCXXCompilerABI.cpp -auxbase-strip CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -version -mn-flash=1 -mskip-bug -fno-rtti -fno-enforce-eh-specs -fno-exceptions -o /tmp/ccLJ7rNw.s
+        GNU C++14 (GCC) version 7.3.0 (avr)
+        	compiled by GNU C version 13.2.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version none
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-        ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/13"
-        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
-        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"
-        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"
-        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
+        ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/include/c++/7.3.0"
+        ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/include/c++/7.3.0/avr"
+        ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/include/c++/7.3.0/backward"
+        ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/sys-include"
         #include "..." search starts here:
         #include <...> search starts here:
-         /usr/include/c++/13
-         /usr/include/x86_64-linux-gnu/c++/13
-         /usr/include/c++/13/backward
-         /usr/lib/gcc/x86_64-linux-gnu/13/include
-         /usr/local/include
-         /usr/include/x86_64-linux-gnu
-         /usr/include
+         /usr/lib/gcc/avr/7.3.0/include
+         /usr/lib/gcc/avr/7.3.0/include-fixed
+         /usr/lib/gcc/avr/7.3.0/../../../avr/include
         End of search list.
-        Compiler executable checksum: 7896445e4990772fdae9dc0659a99266
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e0983.dir/'
-         as -v --64 -o CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc2vWYuS.s
-        GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
-        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
-        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_e0983
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0983.dir/link.txt --verbose=1
-        /usr/bin/c++  -v CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_e0983 
+        GNU C++14 (GCC) version 7.3.0 (avr)
+        	compiled by GNU C version 13.2.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version none
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: cf9ff40b4c2be7337f4e136124bad438
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-specs=device-specs/specs-avr2'
+         /usr/lib/gcc/avr/7.3.0/../../../avr/bin/as -mmcu=avr2 -o CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccLJ7rNw.s
+        COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/
+        LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-specs=device-specs/specs-avr2'
+        Linking CXX executable cmTC_d4717
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d4717.dir/link.txt --verbose=1
+        /usr/bin/avr-g++  -v CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_d4717 
         Using built-in specs.
-        COLLECT_GCC=/usr/bin/c++
-        COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
-        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-        OFFLOAD_TARGET_DEFAULT=1
-        Target: x86_64-linux-gnu
-        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
-        Thread model: posix
-        Supported LTO compression algorithms: zlib zstd
-        gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
-        COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
-        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e0983' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e0983.'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjkYvgd.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_e0983 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e0983' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e0983.'
-        gmake[1]: Leaving directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql'
+        Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2
+        COLLECT_GCC=/usr/bin/avr-g++
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/7.3.0/lto-wrapper
+        Target: avr
+        Configured with: ../gcc/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2'
+        Thread model: single
+        gcc version 7.3.0 (GCC) 
+        COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/
+        LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d4717' '-specs=device-specs/specs-avr2'
+         /usr/lib/gcc/avr/7.3.0/collect2 -plugin /usr/lib/gcc/avr/7.3.0/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccRRO8f9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc --pmem-wrap-around=8k -o cmTC_d4717 -L/usr/lib/gcc/avr/7.3.0 -L/usr/lib/gcc/avr/7.3.0/../../../avr/lib CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -lgcc -lm --start-group -lgcc -lm -lc --end-group
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d4717' '-specs=device-specs/specs-avr2'
+        gmake[1]: Leaving directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo'
         
       exitCode: 0
   -
@@ -374,27 +326,19 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
       - "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     message: |
       Parsed CXX implicit include dir info: rv=done
         found start of include info
         found start of implicit include info
-          add: [/usr/include/c++/13]
-          add: [/usr/include/x86_64-linux-gnu/c++/13]
-          add: [/usr/include/c++/13/backward]
-          add: [/usr/lib/gcc/x86_64-linux-gnu/13/include]
-          add: [/usr/local/include]
-          add: [/usr/include/x86_64-linux-gnu]
-          add: [/usr/include]
+          add: [/usr/lib/gcc/avr/7.3.0/include]
+          add: [/usr/lib/gcc/avr/7.3.0/include-fixed]
+          add: [/usr/lib/gcc/avr/7.3.0/../../../avr/include]
         end of search list found
-        collapse include dir [/usr/include/c++/13] ==> [/usr/include/c++/13]
-        collapse include dir [/usr/include/x86_64-linux-gnu/c++/13] ==> [/usr/include/x86_64-linux-gnu/c++/13]
-        collapse include dir [/usr/include/c++/13/backward] ==> [/usr/include/c++/13/backward]
-        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/13/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/13/include]
-        collapse include dir [/usr/local/include] ==> [/usr/local/include]
-        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
-        collapse include dir [/usr/include] ==> [/usr/include]
-        implicit include dirs: [/usr/include/c++/13;/usr/include/x86_64-linux-gnu/c++/13;/usr/include/c++/13/backward;/usr/lib/gcc/x86_64-linux-gnu/13/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+        collapse include dir [/usr/lib/gcc/avr/7.3.0/include] ==> [/usr/lib/gcc/avr/7.3.0/include]
+        collapse include dir [/usr/lib/gcc/avr/7.3.0/include-fixed] ==> [/usr/lib/gcc/avr/7.3.0/include-fixed]
+        collapse include dir [/usr/lib/gcc/avr/7.3.0/../../../avr/include] ==> [/usr/lib/avr/include]
+        implicit include dirs: [/usr/lib/gcc/avr/7.3.0/include;/usr/lib/gcc/avr/7.3.0/include-fixed;/usr/lib/avr/include]
       
       
   -
@@ -402,129 +346,89 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
       - "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:2 (project)"
+      - "CMakeLists.txt:9 (project)"
     message: |
       Parsed CXX implicit link information:
-        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql']
+        link line regex: [^( *|.*[/\\])(avr-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e0983/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_e0983.dir/build.make CMakeFiles/cmTC_e0983.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-zwFiql']
-        ignore line: [Building CXX object CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d4717/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_d4717.dir/build.make CMakeFiles/cmTC_d4717.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/victorkelly1/C++/practicas/RTOS/build/CMakeFiles/CMakeScratch/TryCompile-Pcn4uo']
+        ignore line: [Building CXX object CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/usr/bin/avr-g++   -v -o CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
-        ignore line: [COLLECT_GCC=/usr/bin/c++]
-        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-        ignore line: [Target: x86_64-linux-gnu]
-        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
-        ignore line: [Thread model: posix]
-        ignore line: [Supported LTO compression algorithms: zlib zstd]
-        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e0983.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_e0983.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc2vWYuS.s]
-        ignore line: [GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)]
-        ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
-        ignore line: []
+        ignore line: [Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2]
+        ignore line: [COLLECT_GCC=/usr/bin/avr-g++]
+        ignore line: [Target: avr]
+        ignore line: [Configured with: ../gcc/configure -v --enable-languages=c c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl -Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl -z relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2']
+        ignore line: [Thread model: single]
+        ignore line: [gcc version 7.3.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-specs=device-specs/specs-avr2']
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/cc1plus -quiet -v /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -mn-flash=1 -mskip-bug -quiet -dumpbase CMakeCXXCompilerABI.cpp -auxbase-strip CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -version -mn-flash=1 -mskip-bug -fno-rtti -fno-enforce-eh-specs -fno-exceptions -o /tmp/ccLJ7rNw.s]
+        ignore line: [GNU C++14 (GCC) version 7.3.0 (avr)]
+        ignore line: [	compiled by GNU C version 13.2.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version none]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-        ignore line: [ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/13"]
-        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
-        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed/x86_64-linux-gnu"]
-        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/include-fixed"]
-        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/include/c++/7.3.0"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/include/c++/7.3.0/avr"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/include/c++/7.3.0/backward"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/avr/7.3.0/../../../avr/sys-include"]
         ignore line: [#include "..." search starts here:]
         ignore line: [#include <...> search starts here:]
-        ignore line: [ /usr/include/c++/13]
-        ignore line: [ /usr/include/x86_64-linux-gnu/c++/13]
-        ignore line: [ /usr/include/c++/13/backward]
-        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/13/include]
-        ignore line: [ /usr/local/include]
-        ignore line: [ /usr/include/x86_64-linux-gnu]
-        ignore line: [ /usr/include]
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/include]
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/include-fixed]
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/../../../avr/include]
         ignore line: [End of search list.]
-        ignore line: [Compiler executable checksum: 7896445e4990772fdae9dc0659a99266]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e0983.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc2vWYuS.s]
-        ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
-        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
-        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_e0983]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0983.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_e0983 ]
+        ignore line: [GNU C++14 (GCC) version 7.3.0 (avr)]
+        ignore line: [	compiled by GNU C version 13.2.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version none]
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: cf9ff40b4c2be7337f4e136124bad438]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-specs=device-specs/specs-avr2']
+        ignore line: [ /usr/lib/gcc/avr/7.3.0/../../../avr/bin/as -mmcu=avr2 -o CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccLJ7rNw.s]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-specs=device-specs/specs-avr2']
+        ignore line: [Linking CXX executable cmTC_d4717]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d4717.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/avr-g++  -v CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_d4717 ]
         ignore line: [Using built-in specs.]
-        ignore line: [COLLECT_GCC=/usr/bin/c++]
-        ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
-        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-        ignore line: [Target: x86_64-linux-gnu]
-        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 13.3.0-6ubuntu2~24.04.1' --with-bugurl=file:///usr/share/doc/gcc-13/README.Bugs --enable-languages=c ada c++ go d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-13 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/libexec --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-libstdcxx-backtrace --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-13-EldibY/gcc-13-13.3.0/debian/tmp-gcn/usr --enable-offload-defaulted --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
-        ignore line: [Thread model: posix]
-        ignore line: [Supported LTO compression algorithms: zlib zstd]
-        ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
-        ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
-        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e0983' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e0983.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjkYvgd.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_e0983 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
-          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
+        ignore line: [Reading specs from /usr/lib/gcc/avr/7.3.0/device-specs/specs-avr2]
+        ignore line: [COLLECT_GCC=/usr/bin/avr-g++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/7.3.0/lto-wrapper]
+        ignore line: [Target: avr]
+        ignore line: [Configured with: ../gcc/configure -v --enable-languages=c c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --disable-libcc1 --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr --enable-host-pie ASFLAGS= ASFLAGS_FOR_BUILD= CFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CFLAGS_FOR_BUILD=-g -O2' CPPFLAGS='-Wdate-time -D_FORTIFY_SOURCE=2' CPPFLAGS_FOR_BUILD= CXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'CXXFLAGS_FOR_BUILD=-g -O2' DFLAGS=-frelease DFLAGS_FOR_BUILD=-frelease FCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FCFLAGS_FOR_BUILD=-g -O2' FFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'FFLAGS_FOR_BUILD=-g -O2' GCJFLAGS=-fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1 LDFLAGS='-Wl -Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl -z relro' LDFLAGS_FOR_BUILD= OBJCFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCFLAGS_FOR_BUILD=-g -O2' OBJCXXFLAGS='-g -O2 -ffile-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat  -fcf-protection -fdebug-prefix-map=/build/gcc-avr-TYLliY/gcc-avr-7.3.0+Atmel3.7.0=/usr/src/gcc-avr-1:7.3.0+Atmel3.7.0-1' 'OBJCXXFLAGS_FOR_BUILD=-g -O2']
+        ignore line: [Thread model: single]
+        ignore line: [gcc version 7.3.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/7.3.0/../../../avr/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/7.3.0/:/usr/lib/gcc/avr/7.3.0/../../../avr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d4717' '-specs=device-specs/specs-avr2']
+        link line: [ /usr/lib/gcc/avr/7.3.0/collect2 -plugin /usr/lib/gcc/avr/7.3.0/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccRRO8f9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc --pmem-wrap-around=8k -o cmTC_d4717 -L/usr/lib/gcc/avr/7.3.0 -L/usr/lib/gcc/avr/7.3.0/../../../avr/lib CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj -lgcc -lm --start-group -lgcc -lm -lc --end-group]
+          arg [/usr/lib/gcc/avr/7.3.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
-          arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
-          arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccjkYvgd.res] ==> ignore
-          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [/usr/lib/gcc/avr/7.3.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/avr/7.3.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccRRO8f9.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lm] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
-          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-          arg [--build-id] ==> ignore
-          arg [--eh-frame-hdr] ==> ignore
-          arg [-m] ==> ignore
-          arg [elf_x86_64] ==> ignore
-          arg [--hash-style=gnu] ==> ignore
-          arg [--as-needed] ==> ignore
-          arg [-dynamic-linker] ==> ignore
-          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-          arg [-pie] ==> ignore
-          arg [-znow] ==> ignore
-          arg [-zrelro] ==> ignore
+          arg [--pmem-wrap-around=8k] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_e0983] ==> ignore
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib]
-          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-          arg [-L/lib/../lib] ==> dir [/lib/../lib]
-          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-          arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
-          arg [CMakeFiles/cmTC_e0983.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-          arg [-lstdc++] ==> lib [stdc++]
+          arg [cmTC_d4717] ==> ignore
+          arg [-L/usr/lib/gcc/avr/7.3.0] ==> dir [/usr/lib/gcc/avr/7.3.0]
+          arg [-L/usr/lib/gcc/avr/7.3.0/../../../avr/lib] ==> dir [/usr/lib/gcc/avr/7.3.0/../../../avr/lib]
+          arg [CMakeFiles/cmTC_d4717.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
           arg [-lm] ==> lib [m]
-          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--start-group] ==> ignore
           arg [-lgcc] ==> lib [gcc]
+          arg [-lm] ==> lib [m]
           arg [-lc] ==> lib [c]
-          arg [-lgcc_s] ==> lib [gcc_s]
-          arg [-lgcc] ==> lib [gcc]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o]
-          arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
-        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
-        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
-        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13] ==> [/usr/lib/gcc/x86_64-linux-gnu/13]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib] ==> [/usr/lib]
-        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-        collapse library dir [/lib/../lib] ==> [/lib]
-        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> [/usr/lib]
-        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
-        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
-        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/13;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+          arg [--end-group] ==> ignore
+        collapse library dir [/usr/lib/gcc/avr/7.3.0] ==> [/usr/lib/gcc/avr/7.3.0]
+        collapse library dir [/usr/lib/gcc/avr/7.3.0/../../../avr/lib] ==> [/usr/lib/avr/lib]
+        implicit libs: [gcc;m;gcc;m;c]
+        implicit objs: []
+        implicit dirs: [/usr/lib/gcc/avr/7.3.0;/usr/lib/avr/lib]
         implicit fwks: []
       
       

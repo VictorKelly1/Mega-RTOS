@@ -1,20 +1,28 @@
 cmake_minimum_required(VERSION 3.16)
-project(RTOS)
 
-set(CMAKE_CXX_COMPILER avr-g++)
+set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_C_COMPILER avr-gcc)
+set(CMAKE_CXX_COMPILER avr-g++)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+project(RTOS C CXX ASM)
 
 set(MCU atmega328p)
 set(F_CPU 16000000UL)
 
-add_definitions(-DF_CPU=${F_CPU})
+add_compile_definitions(F_CPU=${F_CPU})
 
 add_executable(RTOS
     src/main.cpp
+    src/kernel/Kernel.cpp
+    src/kernel/Process.cpp
     include/procedures/switchContextASM.S
 )
 
-target_include_directories(RTOS PRIVATE include)
+target_include_directories(RTOS PRIVATE
+    include
+)
 
 target_compile_options(RTOS PRIVATE
     -mmcu=${MCU}
