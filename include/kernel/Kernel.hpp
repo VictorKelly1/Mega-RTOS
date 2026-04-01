@@ -15,12 +15,15 @@ public:                                                                     //pu
     //Func definitions
     void createTask(void (*taskFunction)(), uint8_t priority);
     void scheduler();
-    void switchContext(Process* nextProcess);
+    void switchContext(Process* next);
     void start();
+    void initTimer0();
 
     //Getters and Setters
     Process* getCurrentProcess() const { return m_currentProcess; }
     void setCurrentProcess(Process* newProcess) { m_currentProcess = newProcess; }
+
+    uint8_t getProcessCount() const { return m_processCount; }
 
 private: 
     
@@ -36,7 +39,9 @@ private:
     //Ptr to current process in CPU
     Process* m_currentProcess {nullptr};
 
-    int8_t m_processCount {};
+    uint8_t m_processCount {};
 };
+
+extern "C" void switchContextASM(Process* current, Process* next);
 
 #endif 

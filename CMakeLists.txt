@@ -11,6 +11,7 @@ add_definitions(-DF_CPU=${F_CPU})
 
 add_executable(RTOS
     src/main.cpp
+    include/procedures/switchContextASM.S
 )
 
 target_include_directories(RTOS PRIVATE include)
