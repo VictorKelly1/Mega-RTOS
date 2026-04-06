@@ -35,11 +35,13 @@ private:
 
 private:
 
-    static constexpr uint8_t MAX_PROCESSES{2};
+    static constexpr uint8_t MAX_PROCESSES{6};
 
     Process m_PCB[MAX_PROCESSES];
 
     Process* m_currentProcess{nullptr};
+
+    uint8_t m_currentIndex {0};
 
     uint8_t m_processCount{0};
 };

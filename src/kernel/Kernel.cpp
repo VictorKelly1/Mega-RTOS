@@ -2,20 +2,9 @@
 #include <avr/interrupt.h>
 
 #include "kernel/Kernel.hpp"
+#include "kernel/Process.hpp"
 
 extern "C" void switchContextASM(uint8_t* current, uint8_t* next);
-
-void Kernel::switchContext(Process* next)
-{
-    Process* current = m_currentProcess;
-
-    m_currentProcess = next;
-
-    switchContextASM(
-        (uint8_t*)current->getSPaddress(),
-        (uint8_t*)next->getSPaddress()
-    );
-}
 
 void Kernel::initTimer0()
 {
@@ -31,7 +20,7 @@ void Kernel::initTimer0()
     TCCR0B |= (1 << CS01) | (1 << CS00);
 
     // 16MHz / 64 = 250000 Hz
-    // 250000 / 1000 = 250 ticks
+    // 250000 / 1000 = 250 ticks                //This is the quantum time for Round Robin scheduler 
     OCR0A = 249;
 
     // Enable interrupt
@@ -46,13 +35,41 @@ ISR(TIMER0_COMPA_vect)
 
 void Kernel::scheduler()
 {
-    if (m_currentProcess == &m_PCB[0])
+    if (m_processCount < 2) return;                                 //we need at least 2 processes for rotation
+
+    m_currentProcess->setState(Process::State::READY);
+
+    uint8_t prevIndex = m_currentIndex;
+    uint8_t nextIndex = prevIndex;
+
+    for (uint8_t index { 1 }; index <= m_processCount; ++index)
     {
-        switchContext(&m_PCB[1]);
+        uint8_t candidate = (prevIndex + index) % m_processCount;  
+        
+        if (m_PCB[candidate].getState() == Process::State::READY)
+        {
+            nextIndex = candidate;
+            break; 
+        }
     }
-    else
+
+    if (nextIndex != prevIndex)                                     //if the next process is diferent from the current one
     {
-        switchContext(&m_PCB[0]);
+        m_currentIndex = nextIndex;
+        Process* nextProcess = &m_PCB[m_currentIndex];
+
+        m_currentProcess = nextProcess;
+        
+        m_currentProcess->setState(Process::State::RUNNING);
+
+        switchContextASM(
+            (uint8_t*)m_PCB[prevIndex].getSPaddress(),
+            (uint8_t*)nextProcess->getSPaddress()
+        );
+    }
+    else 
+    {
+        m_currentProcess->setState(Process::State::RUNNING);        //if there is not a new process the current one keeps running 
     }
 }
 
@@ -71,13 +88,14 @@ void Kernel::start() {
     if (m_processCount == 0) return;
 
     m_currentProcess = &m_PCB[0];
+    //m_currentProcess->setState(Process::State::RUNNING);
     
     // Init the Timer0 but SEI will activate when  
     // we restore the SREG of the first task that has 0x80 
     initTimer0(); 
 
     // Jump to first task 
-    // Give m_sp to the firat task to the switch context in ASM 
+    // Give m_sp to the first task to the switch context in ASM de carga
     uint8_t* dummySP; 
     switchContextASM((uint8_t*)&dummySP, (uint8_t*)m_currentProcess->getSPaddress());
 }

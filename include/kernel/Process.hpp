@@ -5,15 +5,14 @@
 #include <stdint.h>
 
 class Process final {
-
-private:
-  using TaskFunction = void (*)();  //function Ptr
-
-  enum class State : uint8_t { 
+public: 
+      enum class State : uint8_t { 
         READY, 
         RUNNING, 
         BLOCKED 
   };
+private:
+  using TaskFunction = void (*)();  //function Ptr
 
   static constexpr uint16_t STACK_SIZE{128};
 

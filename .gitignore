@@ -1,0 +1,18 @@
+# Compilación
+build/
+bin/
+obj/
+
+# Archivos de ayuda para el LSP / Editor
+compile_commands.json
+.clangd/
+.cache/
+
+# Binarios finales
+*.hex
+*.elf
+*.bin
+*.map
+
+# Archivos de sistema
+.DS_Store
