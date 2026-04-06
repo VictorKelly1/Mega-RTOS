@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "Process.hpp"
+#include "kernel/Config.hpp"
 
 class Kernel final
 {
@@ -28,16 +29,16 @@ public:
 
 private:
 
-    static Kernel instance;     
+    static Kernel instance;
 
     Kernel();
     ~Kernel() = default;
 
 private:
 
-    static constexpr uint8_t MAX_PROCESSES{6};
+    static constexpr uint8_t MAX_PCBS { MAX_PROCESSES };
 
-    Process m_PCB[MAX_PROCESSES];
+    Process m_PCB[MAX_PCBS];
 
     Process* m_currentProcess{nullptr};
 

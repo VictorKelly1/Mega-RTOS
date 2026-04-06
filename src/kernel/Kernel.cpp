@@ -1,31 +1,35 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#include "kernel/Config.hpp"
 #include "kernel/Kernel.hpp"
 #include "kernel/Process.hpp"
 
-extern "C" void switchContextASM(uint8_t* current, uint8_t* next);
+//Every process needs aprox 150 bytes 
+//The ATmega328P only has 2048 bytes (2KB). 
+//The TROS need space for global variables, stacks, objects atc. use more than 10 processes is dangerus 
+static_assert(MAX_PROCESSES <= 10, "ERROR: MAX_PROCESSES is too much. It will overflow the RAM of the ATmega328P.");
 
-void Kernel::initTimer0()
+extern "C" void switchContextASM(uint8_t* current, uint8_t* next); 
+
+void Kernel::initTimer0()               //SYS_TICK_MS and Frecuency is in Config.hpp 
 {
     cli();
+    //interrupt SYS_TICK_MS, Frecuency = 1000 / SYS_TICK_MS, for 1ms is 1000Hz.
+    //comun prescaler 64 for 16MHz y 8MHz
+    const uint32_t prescaler = 64;
+    const uint32_t targetFreq = 1000 / SYS_TICK_MS;
+    
+    // Cálculo automático del valor de comparación
+    // (F_CPU / (64 * 1000)) - 1
+    constexpr uint8_t ocrValue = (uint8_t)((F_CPU / (prescaler * targetFreq)) - 1);
 
-    TCCR0A = 0;
-    TCCR0B = 0;
+    TCCR0A = (1 << WGM01);              // Mode Clear on Compare with 0CR0A 
+    TCCR0B = (1 << CS01) | (1 << CS00); // Prescaler 64 to count 1ms with 250000Hz and not with 16MHz
+    OCR0A = ocrValue;                   // Calculated value 
 
-    // CTC Mode
-    TCCR0A |= (1 << WGM01);
-
-    // Prescaler 64
-    TCCR0B |= (1 << CS01) | (1 << CS00);
-
-    // 16MHz / 64 = 250000 Hz
-    // 250000 / 1000 = 250 ticks                //This is the quantum time for Round Robin scheduler 
-    OCR0A = 249;
-
-    // Enable interrupt
-    TIMSK0 |= (1 << OCIE0A);
-
+    TIMSK0 |= (1 << OCIE0A); 
+    
     sei();
 }
 ISR(TIMER0_COMPA_vect)
@@ -87,9 +91,7 @@ void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
 void Kernel::start() {
     if (m_processCount == 0) return;
 
-    m_currentProcess = &m_PCB[0];
-    //m_currentProcess->setState(Process::State::RUNNING);
-    
+    m_currentProcess = &m_PCB[0]; 
     // Init the Timer0 but SEI will activate when  
     // we restore the SREG of the first task that has 0x80 
     initTimer0(); 
