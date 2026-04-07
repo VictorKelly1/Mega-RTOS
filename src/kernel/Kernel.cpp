@@ -99,53 +99,47 @@ void Kernel::delay(uint16_t ms) {
 
 void Kernel::scheduler()
 {
-    if (m_processCount < 1) return;                                 //we need at least 1 process
+    if (m_processCount < 1) return; 
 
-    //If the process is blocked for delay we dont go
+    // Si el proceso actual no está bloqueado (por delay), lo pasamos a READY
     if (m_currentProcess->getState() == Process::State::RUNNING)
     {
         m_currentProcess->setState(Process::State::READY);
     }
 
     uint8_t prevIndex = m_currentIndex;
-    int16_t foundIndex = -1;                                        //We use -1 if there are no process ready
+    uint8_t nextIndex = prevIndex;
 
-    //Find the next process ready
+    // Buscamos el siguiente proceso READY (siempre habrá al menos uno: la Idle Task)
     for (uint8_t index { 0 }; index < m_processCount; ++index)
     {
-        uint8_t candidate = (prevIndex + index + 1) % m_processCount;  
+        uint8_t candidate = (prevIndex + index + 1) % m_processCount;
         
         if (m_PCB[candidate].getState() == Process::State::READY)
         {
-            foundIndex = candidate;
+            nextIndex = candidate;
             break; 
         }
     }
 
-    if (foundIndex != -1)                                           //if we found a ready process
+    // Si el siguiente es distinto al actual, cambiamos de contexto
+    if (nextIndex != prevIndex)
     {
-        if (foundIndex != prevIndex)                                //if it is not the current one 
-        {
-            m_currentIndex = (uint8_t)foundIndex;
-            Process* nextProcess = &m_PCB[m_currentIndex];
-            m_currentProcess = nextProcess;
-            
-            m_currentProcess->setState(Process::State::RUNNING);
+        m_currentIndex = nextIndex;
+        Process* nextProcess = &m_PCB[m_currentIndex];
+        m_currentProcess = nextProcess;
+        
+        m_currentProcess->setState(Process::State::RUNNING);
 
-            switchContextASM(
-                (uint8_t*)m_PCB[prevIndex].getSPaddress(),
-                (uint8_t*)nextProcess->getSPaddress()
-            );
-        }
-        else                                                        
-        {
-            m_currentProcess->setState(Process::State::RUNNING);
-        }
+        switchContextASM(
+            (uint8_t*)m_PCB[prevIndex].getSPaddress(),
+            (uint8_t*)nextProcess->getSPaddress()
+        );
     }
-    else                                                            
+    else 
     {
-        //We dont call switch context 
-        //the ISR ends and CPU go back to idle task in start() 
+        // Si solo el actual está READY, sigue corriendo
+        m_currentProcess->setState(Process::State::RUNNING);
     }
 }
 
@@ -160,7 +154,20 @@ void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
 
 }
 
+void Kernel::idleTask() {
+    set_sleep_mode(SLEEP_MODE_IDLE);
+    while (true) {
+        sleep_enable();
+        sei();
+        sleep_cpu();
+        sleep_disable();
+    }
+}
+
 void Kernel::start() {
+
+    createTask(idleTask, 0);
+
     if (m_processCount == 0) return;
 
     m_currentProcess = &m_PCB[0]; 
@@ -173,15 +180,6 @@ void Kernel::start() {
     uint8_t* dummySP; 
     switchContextASM((uint8_t*)&dummySP, (uint8_t*)m_currentProcess->getSPaddress());
 
-    //Main Daemon idle task
-    set_sleep_mode(SLEEP_MODE_IDLE);//Sleep mode configuration 
-    while (true) {
-        sleep_enable();             //Activates sleep bit 
-        sei();
-        sleep_cpu();                //CPU sleeps until next tick
-
-        sleep_disable();            //when ISR comes, sleep desactivates
-    }
 }
 
 Kernel Kernel::instance;
@@ -196,4 +194,6 @@ Kernel::Kernel()
 {
     m_currentProcess = nullptr;
     m_processCount = 0;
+    m_currentIndex = 0; 
+    m_sleepingHead = nullptr;
 }

@@ -10,12 +10,6 @@ void task1() {
     }
 }
 
-void idleTask(){
-    while(true){
-
-    }
-}
-
 void task2() {
     DDRC |= (1 << PC1);
 
@@ -25,12 +19,21 @@ void task2() {
     }
 }
 
+void task3() {
+    DDRB |= (1 << PB5);
+
+    while (true) {
+        PORTB ^= (1 << PB5);
+        Kernel::getInstance().delay(500);
+    }
+}
+
 int main() {
     Kernel& kernel = Kernel::getInstance();
 
     kernel.createTask(task1, 1);
     kernel.createTask(task2, 2);
-    kernel.createTask(idleTask, 1);
+    kernel.createTask(task3, 0);
 
     kernel.start();
 

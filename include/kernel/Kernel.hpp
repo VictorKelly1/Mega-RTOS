@@ -20,6 +20,8 @@ public:
     void start();
     void initTimer0();
 
+    static void idleTask();
+
     void updateSleepers();
     void delay(uint16_t ms);
 
