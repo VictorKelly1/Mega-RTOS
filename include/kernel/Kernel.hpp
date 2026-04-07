@@ -8,20 +8,22 @@
 class Kernel final
 {
 public:
-    // Singleton
-    static Kernel& getInstance();
-
+    static Kernel& getInstance();                   //Singleton aplied 
+    
     Kernel(const Kernel&) = delete;
     Kernel& operator=(const Kernel&) = delete;
 
-    // API
+    //Func declarations
     void createTask(void (*taskFunction)(), uint8_t priority);
     void scheduler();
     void switchContext(Process* next);
     void start();
     void initTimer0();
 
-    // Getters / setters
+    void updateSleepers();
+    void delay(uint16_t ms);
+
+    //Getters / setters
     Process* getCurrentProcess() const { return m_currentProcess; }
     void setCurrentProcess(Process* newProcess) { m_currentProcess = newProcess; }
 
@@ -41,6 +43,8 @@ private:
     Process m_PCB[MAX_PCBS];
 
     Process* m_currentProcess{nullptr};
+
+    Process*m_sleepingHead { nullptr };
 
     uint8_t m_currentIndex {0};
 

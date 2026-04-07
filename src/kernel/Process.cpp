@@ -32,7 +32,7 @@ void Process::stackInit()
     // Registers that switchContextASM will take out 'pop'
     *m_sp-- = 0x00; // R0
     *m_sp-- = 0x80; // SREG 0x80 has interrupts 
-    *m_sp-- = 0x00; // R1 is 0 register of C++
+    *m_sp-- = 0x00; // R1 C++
 
     for (uint8_t i = 2; i <= 31; ++i)
     {
@@ -44,7 +44,7 @@ void Process::stackInit()
 Process::Process(TaskFunction task, uint8_t priority)
     : m_task(task)
     , m_state(State::READY)
-    , m_priority(priority) 
+    , m_priority(priority)
 {
   m_pid = ++PID;
 

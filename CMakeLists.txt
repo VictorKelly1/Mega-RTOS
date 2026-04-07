@@ -21,7 +21,7 @@ add_executable(RTOS
     src/main.cpp
     src/kernel/Kernel.cpp
     src/kernel/Process.cpp
-    include/procedures/switchContextASM.S
+    src/procedures/switchContextASM.S
 )
 
 target_include_directories(RTOS PRIVATE

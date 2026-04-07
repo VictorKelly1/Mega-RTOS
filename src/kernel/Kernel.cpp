@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/sleep.h>
 
 #include "kernel/Config.hpp"
 #include "kernel/Kernel.hpp"
@@ -8,8 +9,9 @@
 //Every process needs aprox 150 bytes 
 //The ATmega328P only has 2048 bytes (2KB). 
 //The TROS need space for global variables, stacks, objects atc. use more than 10 processes is dangerus 
-static_assert(MAX_PROCESSES <= 10, "ERROR: MAX_PROCESSES is too much. It will overflow the RAM of the ATmega328P.");
+static_assert(MAX_PROCESSES <= 8, "ERROR: MAX_PROCESSES is too much, the max is 8. It will overflow the RAM of the ATmega328P.");
 
+//Function definitions
 extern "C" void switchContextASM(uint8_t* current, uint8_t* next); 
 
 void Kernel::initTimer0()               //SYS_TICK_MS and Frecuency is in Config.hpp 
@@ -34,46 +36,116 @@ void Kernel::initTimer0()               //SYS_TICK_MS and Frecuency is in Config
 }
 ISR(TIMER0_COMPA_vect)
 {
+    Kernel::getInstance().updateSleepers();
     Kernel::getInstance().scheduler();
+}
+
+void Kernel::updateSleepers() {
+    if (m_sleepingHead == nullptr) return;
+
+    //We rest 1 tick to the queue head
+    m_sleepingHead->setDelta(m_sleepingHead->getDelta() - 1);
+
+    // If the time of the first process in queue left, we wake it up
+    // we use a while loop for wake up serveral processes 
+    while (m_sleepingHead != nullptr && m_sleepingHead->getDelta() == 0) {
+        Process* p = m_sleepingHead;
+        
+        p->setState(Process::State::READY); 
+        
+        //put it out of the delta queue 
+        m_sleepingHead = p->getNextSleeper();
+        p->setNextSleeper(nullptr); 
+    }
+}
+
+void Kernel::delay(uint16_t ms) {
+    if (ms == 0) return;
+
+    cli(); 
+
+    uint16_t remaining = ms / SYS_TICK_MS;
+    Process* current = m_sleepingHead;
+    Process* prev = nullptr;
+
+    //find the correct position in queue 
+    while (current != nullptr && remaining >= current->getDelta()) {
+        remaining -= current->getDelta();
+        prev = current;
+        current = current->getNextSleeper();
+    }
+
+    //Configuration of the next process that is gooing to sleep 
+    m_currentProcess->setDelta(remaining);
+    m_currentProcess->setNextSleeper(current);
+    m_currentProcess->setState(Process::State::BLOCKED);
+
+    //Put it on the linked list 
+    if (prev == nullptr) {
+        m_sleepingHead = m_currentProcess; // Es el primero en despertar
+    } else {
+        prev->setNextSleeper(m_currentProcess);
+    }
+
+    //fix the time of the next one
+    if (current != nullptr) {
+        current->setDelta(current->getDelta() - remaining);
+    }
+
+    sei(); 
+
+    scheduler(); // switch context with "Yelding" 
 }
 
 void Kernel::scheduler()
 {
-    if (m_processCount < 2) return;                                 //we need at least 2 processes for rotation
+    if (m_processCount < 1) return;                                 //we need at least 1 process
 
-    m_currentProcess->setState(Process::State::READY);
+    //If the process is blocked for delay we dont go
+    if (m_currentProcess->getState() == Process::State::RUNNING)
+    {
+        m_currentProcess->setState(Process::State::READY);
+    }
 
     uint8_t prevIndex = m_currentIndex;
-    uint8_t nextIndex = prevIndex;
+    int16_t foundIndex = -1;                                        //We use -1 if there are no process ready
 
-    for (uint8_t index { 1 }; index <= m_processCount; ++index)
+    //Find the next process ready
+    for (uint8_t index { 0 }; index < m_processCount; ++index)
     {
-        uint8_t candidate = (prevIndex + index) % m_processCount;  
+        uint8_t candidate = (prevIndex + index + 1) % m_processCount;  
         
         if (m_PCB[candidate].getState() == Process::State::READY)
         {
-            nextIndex = candidate;
+            foundIndex = candidate;
             break; 
         }
     }
 
-    if (nextIndex != prevIndex)                                     //if the next process is diferent from the current one
+    if (foundIndex != -1)                                           //if we found a ready process
     {
-        m_currentIndex = nextIndex;
-        Process* nextProcess = &m_PCB[m_currentIndex];
+        if (foundIndex != prevIndex)                                //if it is not the current one 
+        {
+            m_currentIndex = (uint8_t)foundIndex;
+            Process* nextProcess = &m_PCB[m_currentIndex];
+            m_currentProcess = nextProcess;
+            
+            m_currentProcess->setState(Process::State::RUNNING);
 
-        m_currentProcess = nextProcess;
-        
-        m_currentProcess->setState(Process::State::RUNNING);
-
-        switchContextASM(
-            (uint8_t*)m_PCB[prevIndex].getSPaddress(),
-            (uint8_t*)nextProcess->getSPaddress()
-        );
+            switchContextASM(
+                (uint8_t*)m_PCB[prevIndex].getSPaddress(),
+                (uint8_t*)nextProcess->getSPaddress()
+            );
+        }
+        else                                                        
+        {
+            m_currentProcess->setState(Process::State::RUNNING);
+        }
     }
-    else 
+    else                                                            
     {
-        m_currentProcess->setState(Process::State::RUNNING);        //if there is not a new process the current one keeps running 
+        //We dont call switch context 
+        //the ISR ends and CPU go back to idle task in start() 
     }
 }
 
@@ -100,6 +172,16 @@ void Kernel::start() {
     // Give m_sp to the first task to the switch context in ASM de carga
     uint8_t* dummySP; 
     switchContextASM((uint8_t*)&dummySP, (uint8_t*)m_currentProcess->getSPaddress());
+
+    //Main Daemon idle task
+    set_sleep_mode(SLEEP_MODE_IDLE);//Sleep mode configuration 
+    while (true) {
+        sleep_enable();             //Activates sleep bit 
+        sei();
+        sleep_cpu();                //CPU sleeps until next tick
+
+        sleep_disable();            //when ISR comes, sleep desactivates
+    }
 }
 
 Kernel Kernel::instance;
