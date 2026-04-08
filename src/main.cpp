@@ -37,9 +37,6 @@ int main() {
 
     kernel.start();
 
-    while (1) {
-        asm volatile("nop");
-    }
 
     return 0;
 }

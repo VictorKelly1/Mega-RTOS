@@ -3,6 +3,7 @@
 #include <avr/sleep.h>
 
 #include "kernel/Config.hpp"
+#include "kernel/CriticalSection.hpp"
 #include "kernel/Kernel.hpp"
 #include "kernel/Process.hpp"
 
@@ -62,37 +63,40 @@ void Kernel::updateSleepers() {
 void Kernel::delay(uint16_t ms) {
     if (ms == 0) return;
 
-    cli(); 
+     
 
     uint16_t remaining = ms / SYS_TICK_MS;
-    Process* current = m_sleepingHead;
-    Process* prev = nullptr;
 
-    //find the correct position in queue 
-    while (current != nullptr && remaining >= current->getDelta()) {
-        remaining -= current->getDelta();
-        prev = current;
-        current = current->getNextSleeper();
-    }
+    {//Critical CriticalSection
+        CriticalSection active;
 
-    //Configuration of the next process that is gooing to sleep 
-    m_currentProcess->setDelta(remaining);
-    m_currentProcess->setNextSleeper(current);
-    m_currentProcess->setState(Process::State::BLOCKED);
+        Process* current = m_sleepingHead;
+        Process* prev = nullptr;
 
-    //Put it on the linked list 
-    if (prev == nullptr) {
-        m_sleepingHead = m_currentProcess; // Es el primero en despertar
-    } else {
-        prev->setNextSleeper(m_currentProcess);
-    }
+        //find the correct position in queue 
+        while (current != nullptr && remaining >= current->getDelta()) {
+            remaining -= current->getDelta();
+            prev = current;
+            current = current->getNextSleeper();
+        }
 
-    //fix the time of the next one
-    if (current != nullptr) {
-        current->setDelta(current->getDelta() - remaining);
-    }
+        //Configuration of the next process that is gooing to sleep 
+        m_currentProcess->setDelta(remaining);
+        m_currentProcess->setNextSleeper(current);
+        m_currentProcess->setState(Process::State::BLOCKED);
 
-    sei(); 
+        //Put it on the linked list 
+        if (prev == nullptr) {
+            m_sleepingHead = m_currentProcess; // Es el primero en despertar
+        } else {
+            prev->setNextSleeper(m_currentProcess);
+        }
+
+        //fix the time of the next one
+        if (current != nullptr) {
+            current->setDelta(current->getDelta() - remaining);
+        }
+    }//End of critical CriticalSection object active destroyed 
 
     scheduler(); // switch context with "Yelding" 
 }
@@ -145,13 +149,14 @@ void Kernel::scheduler()
 
 void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
 {
+    CriticalSection active;
+
     if (m_processCount >= MAX_PROCESSES)
         return;
 
     m_PCB[m_processCount].init(taskFunction, priority);
 
     m_processCount++;
-
 }
 
 void Kernel::idleTask() {

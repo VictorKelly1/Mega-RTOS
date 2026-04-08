@@ -2,6 +2,7 @@
 #define KERNEL_HPP
 
 #include <stdint.h>
+
 #include "Process.hpp"
 #include "kernel/Config.hpp"
 
