@@ -9,7 +9,9 @@ public:
     enum class State : uint8_t { 
         READY, 
         RUNNING, 
-        BLOCKED 
+        BLOCKED,
+        WAITING_MUTEX,
+        IDLE
     };
 
 private:
