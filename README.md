@@ -1,4 +1,4 @@
-# megaRTOS v1.0.0
+# 🧠 megaRTOS v1.0.0
 
 megaRTOS is a lightweight, open source, preemptive Real-Time Operating System (RTOS) designed specifically for the ATmega328P (Arduino Uno). Built from the ground up in C++17 and AVR Assembly, it provides a robust multitasking environment for embedded developers who need concurrency, synchronization, and efficient I/O without the overhead of larger OSs.
 
@@ -70,6 +70,6 @@ make
 # 👨‍💻 Author
 Victor Computer Science Egineer Specializing in Embedded Systems and Low-Level C++ Development.
 
-Link to example video soon...
-Documentation soon... 
+# ▶️ Link to example video soon...
+# 📑 Documentation soon... 
 
