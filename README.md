@@ -29,6 +29,22 @@ megaRTOS is a lightweight, open source, preemptive Real-Time Operating System (R
 If you only need the implementation...
 
 There is a Realease. v1.0.0 
+📥 How to Download and Install
+Option 1: Direct Download (Recommended for Users)
+Go to the Releases page of this repository.
+
+Under Assets, download the libmegaRTOS.a file.
+
+Download the Source code (zip) to get the necessary header files.
+
+Extract the headers from the include/ folder and place them in your project.
+
+Option 2: Via Terminal (Recommended for Developers)
+If you want to have the full environment and examples, clone the repository:
+
+Bash
+git clone https://github.com/tu-usuario/RTOS.git
+cd RTOS
 
 If you want all the code, you don't need to compile the entire RTOS kernel to use it. You can link your project against the precompiled libmegaRTOS.a.
 
