@@ -9,7 +9,7 @@
 #define SYS_TICK_MS 1
 
 #ifndef MAX_PROCESSES
-    #define MAX_PROCESSES 6
+    #define MAX_PROCESSES 7
 #endif
 
 #endif

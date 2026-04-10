@@ -22,6 +22,7 @@ add_executable(RTOS
     src/kernel/Kernel.cpp
     src/kernel/Process.cpp
     src/procedures/switchContextASM.S
+    src/drivers/UART.cpp 
 )
 
 target_include_directories(RTOS PRIVATE

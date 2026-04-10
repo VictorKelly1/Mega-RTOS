@@ -1,124 +1,92 @@
+
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "kernel/Kernel.hpp"
 #include "kernel/Mutex.hpp"
+#include "drivers/UART.hpp"
 
+// Instancia global del Mutex para proteger el puerto Serial
 Mutex serialMutex;
 
-void UART_init() {
-    UBRR0H = 0;
-    UBRR0L = 103; // 9600 
-    UCSR0B = (1 << TXEN0);
-    UCSR0C = (3 << UCSZ00);
-}
 
-void task1() {
-    DDRC |= (1 << PC0);
-
+void taskLED_PC0() {
+    DDRC |= (1 << PC0); // Pin A0
     while (true) {
-        PORTC ^= (1 << PC0);
+        PINC |= (1 << PC0); 
         Kernel::getInstance().delay(500); 
     }
 }
 
-void task2() {
-    DDRC |= (1 << PC1);
-
+void taskLED_PC1() {
+    DDRC |= (1 << PC1); // Pin A1
     while (true) {
-        PORTC ^= (1 << PC1);
-        Kernel::getInstance().delay(500);
+        PINC |= (1 << PC1); 
+        Kernel::getInstance().delay(250); 
     }
 }
 
-void UART_print_str(const char* s) {
-    while (*s) {
-        while (!(UCSR0A & (1 << UDRE0)));
-        UDR0 = *s++;
+void taskLED_PB5() {
+    DDRB |= (1 << PB5); // Pin 13
+    while (true) {
+        PINB |= (1 << PB5); 
+        Kernel::getInstance().delay(1000); 
     }
 }
 
-void taskA() {
+
+void taskPrintA() {
     while (true) {
         serialMutex.lock();
         UART_print_str("AAAAAA\r\n");
         serialMutex.unlock();
-       
-        Kernel::getInstance().delay(15); 
+        Kernel::getInstance().delay(100); 
     }
 }
 
-void taskB() {
+void taskPrintB() {
     while (true) {
         serialMutex.lock();
         UART_print_str("BBBBBB\r\n");
         serialMutex.unlock();
-        
-        Kernel::getInstance().delay(15); 
+        Kernel::getInstance().delay(100); 
     }
 }
 
-void taskC() {
+
+void taskEcho() {
+    serialMutex.lock();
+    UART_print_str("\r\n[SISTEMA MULTI-TAREA ACTIVO]\r\n");
+    serialMutex.unlock();
+
     while (true) {
-        serialMutex.lock();
-        UART_print_str("CCCCCC\r\n");
-        serialMutex.unlock();
+        // Esta tarea se duerme y libera el CPU hasta que presiones una tecla
+        char c = UART_read_blocking(); 
         
-        Kernel::getInstance().delay(15); 
+        serialMutex.lock();
+        UART_print_str("-> Eco: ");
+        UART_write(c);
+        UART_print_str("\r\n");
+        serialMutex.unlock();
     }
 }
 
 int main() {
     UART_init();
-    
-    Kernel::getInstance().createTask(task1, 1);
-    Kernel::getInstance().createTask(task2, 1);
-    Kernel::getInstance().createTask(taskA, 1);
-    Kernel::getInstance().createTask(taskB, 1);
-    Kernel::getInstance().createTask(taskC, 1);
-    
-    Kernel::getInstance().start();
-    return 0;
-}
-
-
-/*#include <avr/io.h>
-#include "kernel/Kernel.hpp"
-
-void task1() {
-    DDRC |= (1 << PC0);
-
-    while (true) {
-        PORTC ^= (1 << PC0);
-        Kernel::getInstance().delay(500); 
-    }
-}
-
-void task2() {
-    DDRC |= (1 << PC1);
-
-    while (true) {
-        PORTC ^= (1 << PC1);
-        Kernel::getInstance().delay(500);
-    }
-}
-
-void task3() {
-    DDRB |= (1 << PB5);
-
-    while (true) {
-        PORTB ^= (1 << PB5);
-        Kernel::getInstance().delay(500);
-    }
-}
-
-int main() {
     Kernel& kernel = Kernel::getInstance();
 
-    kernel.createTask(task1, 1);
-    kernel.createTask(task2, 2);
-    kernel.createTask(task3, 0);
-
+    kernel.createTask(taskLED_PC0, 1);
+    kernel.createTask(taskLED_PC1, 1);
+    kernel.createTask(taskLED_PB5, 1);
+    
+    kernel.createTask(taskPrintA, 1);
+    kernel.createTask(taskPrintB, 1);
+    
+    kernel.createTask(taskEcho, 1);
+    
+    sei(); 
+    
     kernel.start();
-
-
+    
     return 0;
-}*/ 
+}
+

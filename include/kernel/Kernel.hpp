@@ -22,9 +22,13 @@ public:
     void initTimer0();
 
     static void idleTask();
-
+    //CPU cicles functions 
     void updateSleepers();
     void delay(uint16_t ms);
+
+    //I/O functions
+    void blockCurrentProcess();
+    void wakeProcess(Process* process);
 
     //Getters / setters
     Process* getCurrentProcess() const { return m_currentProcess; }

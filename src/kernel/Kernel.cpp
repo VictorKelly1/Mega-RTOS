@@ -187,6 +187,18 @@ void Kernel::start() {
 
 }
 
+//I/O taskFunction
+void Kernel::blockCurrentProcess() {
+    m_currentProcess->setState(Process::State::WAITING_IO);
+    scheduler();
+}
+
+void Kernel::wakeProcess(Process* p) {
+    if (p != nullptr) {
+        p->setState(Process::State::READY);
+    }
+}
+
 Kernel Kernel::instance;
 
 Kernel& Kernel::getInstance()

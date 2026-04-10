@@ -11,7 +11,7 @@ public:
         RUNNING, 
         BLOCKED,
         WAITING_MUTEX,
-        IDLE
+        WAITING_IO,
     };
 
 private:
