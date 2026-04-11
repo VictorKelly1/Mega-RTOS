@@ -1,3 +1,9 @@
+/*
+ * @file Kernel.cpp
+ * @brief Implementation of the megaRTOS Kernel logic.
+ * Includes the preemptive scheduler, the delta queue for efficient delays,
+ * and hardware timer configuration for the system tick.
+*/
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
@@ -15,6 +21,15 @@ static_assert(MAX_PROCESSES <= 8, "ERROR: MAX_PROCESSES is too much, the max is 
 //Function definitions
 extern "C" void switchContextASM(uint8_t* current, uint8_t* next); 
 
+/**
+ * @brief Configures Timer0 to generate the System Tick.
+ * Uses CTC (Clear Timer on Compare) mode with a prescaler of 64 for calculate 1ms with 250000Hz.
+ * The frequency is dynamically calculated based on F_CPU and SYS_TICK_MS.
+ *
+ * @brief Timer0 ISR (Interrupt Service Routine).
+ * Executed every SYS_TICK_MS. It updates the timing for blocked processes
+ * and triggers the preemptive scheduler.
+*/
 void Kernel::initTimer0()               //SYS_TICK_MS and Frecuency is in Config.hpp 
 {
     cli();
@@ -35,12 +50,22 @@ void Kernel::initTimer0()               //SYS_TICK_MS and Frecuency is in Config
     
     sei();
 }
+/*
+ * @brief Timer0 ISR (Interrupt Service Routine).
+ * Executed every SYS_TICK_MS. It updates the timing for blocked processes
+ * and triggers the preemptive scheduler.
+*/ 
 ISR(TIMER0_COMPA_vect)
 {
     Kernel::getInstance().updateSleepers();
     Kernel::getInstance().scheduler();
 }
 
+/*
+ * @brief Updates the sleep timers using a Delta Queue approach.
+ * Instead of decrementing every task's counter, only the head of the list 
+ * is updated, significantly reducing CPU overhead during each tick.
+*/
 void Kernel::updateSleepers() {
     if (m_sleepingHead == nullptr) return;
 
@@ -60,6 +85,12 @@ void Kernel::updateSleepers() {
     }
 }
 
+/*
+ * @brief Blocks the current process for a specific number of ms.
+ * The task is inserted into a sorted Delta Queue. This is a non-busy wait;
+ * the task yields the CPU and stays in BLOCKED state until the time expires.
+ * @param ms Milliseconds to wait.
+*/
 void Kernel::delay(uint16_t ms) {
     if (ms == 0) return;
 
@@ -101,6 +132,12 @@ void Kernel::delay(uint16_t ms) {
     scheduler(); // switch context with "Yelding" 
 }
 
+/*
+ * @brief Round-Robin Preemptive Scheduler.
+ * Selects the next process in the READY state to be executed.
+ * If a context switch is required, it calls the assembly routine to swap stacks.
+ * @note If no user tasks are ready, the system always finds the Idle Task.
+*/
 void Kernel::scheduler()
 {
     if (m_processCount < 1) return; 
@@ -147,6 +184,11 @@ void Kernel::scheduler()
     }
 }
 
+/*
+ * @brief Instantiates a new task in the PCB array.
+ * @param taskFunction Entry point of the task.
+ * @param priority Task priority (Reserved for future multi-level scheduling).
+*/
 void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
 {
     CriticalSection active;
@@ -159,6 +201,11 @@ void Kernel::createTask(void (*taskFunction)(), uint8_t priority)
     m_processCount++;
 }
 
+/*
+ * @brief Low-power Idle Task.
+ * Executed when no other tasks are ready. It puts the CPU into IDLE sleep mode
+ * to save energy, waking up only for hardware interrupts.
+*/
 void Kernel::idleTask() {
     set_sleep_mode(SLEEP_MODE_IDLE);
     while (true) {
@@ -169,6 +216,11 @@ void Kernel::idleTask() {
     }
 }
 
+/*
+ * @brief Bootstraps the OS.
+ * Creates the mandatory Idle Task, initializes the system timer, 
+ * and performs the first context switch to jump into the first task.
+*/
 void Kernel::start() {
 
     createTask(idleTask, 0);
@@ -187,7 +239,11 @@ void Kernel::start() {
 
 }
 
-//I/O taskFunction
+/*
+ * @brief Moves the current task to a WAITING_IO state.
+ * Used by drivers (like UART) to suspend a task until data is available,
+ * preventing polling and saving CPU cycles.
+*/
 void Kernel::blockCurrentProcess() {
     m_currentProcess->setState(Process::State::WAITING_IO);
     scheduler();

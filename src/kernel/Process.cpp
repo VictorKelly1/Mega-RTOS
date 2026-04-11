@@ -1,9 +1,26 @@
+/**
+ * @file Process.cpp
+ * @brief Implementation of the Process class for task context management.
+ * This file handles the lifecycle of a task's control block, specifically 
+ * the simulation of the AVR stack frame required for the first context switch.
+*/
+
 #include "kernel/Process.hpp"
 
-//Variables definitions 
+/* @brief Global Process ID counter. 
+ * Incremented every time a new process is instantiated to ensure unique identification.
+*/
 uint8_t Process::PID{0};
 
 //Function definitions 
+
+/*
+ * @brief Manual initialization of a process instance.
+ *   Used primarily if the process is part of a pre-allocated pool where the 
+ *   constructor isn't called directly during runtime. (Used when a task is created directly in proces control block) 
+ * @param task Function pointer to the task code.
+ * @param priority Execution priority for the scheduler.
+*/
 
 void Process::init(TaskFunction task, uint8_t priority)
 {
@@ -17,6 +34,16 @@ void Process::init(TaskFunction task, uint8_t priority)
 
     stackInit();
 }
+
+/*
+ * @brief Prepares the process stack to simulate an interrupted state.
+ *  It manually pushes the initial task address (Program Counter m_sp(stack pointer))
+ *  and a default set of registers onto the stack. When switchContextASM executes 
+ *  its 'pop' sequence for the first time, it will return into the task function.
+ * @note The SREG is initialized to 0x80 to ensure global interrupts (I-bit) 
+ *  are enabled when the task starts.
+ * @note R1 is initialized to 0x00 as per the avr-gcc ABI convention (__zero_reg__).
+*/
 
 void Process::stackInit()
 {
@@ -41,6 +68,15 @@ void Process::stackInit()
 }
 
 //Constructor definitions
+
+/*
+ * @brief Constructor for the Process class.
+ *  Allocates a unique PID and prepares the task's execution context by 
+ *  initializing its private stack.
+ * @param task The function to be executed as a task.
+ * @param priority Task priority level.
+*/
+
 Process::Process(TaskFunction task, uint8_t priority)
     : m_task(task)
     , m_state(State::READY)

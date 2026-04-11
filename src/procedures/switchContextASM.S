@@ -1,3 +1,10 @@
+/*
+ * @file switchContextASM.S
+ * @brief Low-level Context Switching for ATmega328P. 
+ * It saves the complete CPU state of the current task and restores 
+ * the state of the next task to be executed.
+*/
+
 .section .text
 .global switchContextASM
 

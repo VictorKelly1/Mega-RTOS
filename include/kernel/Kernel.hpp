@@ -1,3 +1,11 @@
+/*
+ * @file Kernel.hpp
+ * @author Victor Kelly 
+ * @brief Core real-time scheduler and kernel management for megaRTOS.
+ * This class implements the Singleton pattern to manage task scheduling, 
+ * time-based events (ISR)(delays), and process synchronization primitives.
+*/
+
 #ifndef KERNEL_HPP
 #define KERNEL_HPP
 
@@ -5,6 +13,21 @@
 
 #include "Process.hpp"
 #include "kernel/Config.hpp"
+
+/*
+ * @class Kernel
+ * @brief The central controller of the Operating System.
+ * Handles the Round-Robin preemptive scheduling, task creation, and 
+ * the transition between user tasks and the system idle task.
+*/
+    /*
+     * @brief Returns the global instance of the Kernel.
+     * @return Kernel& Reference to the singleton instance.
+     */
+
+    /*
+     * @brief Deleted copy constructor and assignment operator to enforce Singleton pattern.
+*/
 
 class Kernel final
 {
@@ -43,7 +66,7 @@ private:
     Kernel();
     ~Kernel() = default;
 
-private:
+private:                                                //Members 
 
     static constexpr uint8_t MAX_PCBS { MAX_PROCESSES };
 
@@ -57,6 +80,12 @@ private:
 
     uint8_t m_processCount{0};
 };
+
+/*
+ * @brief External assembly routine for low-level context switching.
+ * @param currentSP Address of the current process stack pointer variable.
+ * @param nextSP Address of the next process stack pointer variable.
+*/
 
 extern "C" void switchContextASM(uint8_t* currentSP, uint8_t* nextSP);
 

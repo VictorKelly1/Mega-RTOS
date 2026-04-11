@@ -1,12 +1,32 @@
+/*
+ * @file Process.hpp
+ * @author Victor Kelly 
+ * @brief Task control block and stack management for megaRTOS.
+ * * This file defines the Process class, which encapsulates the state of an 
+ * individual execution thread, including its stack space, current stack 
+ * pointer, and execution status.
+ * * @version 1.0.0
+ * @date 2026-04-10
+ * * @copyright Copyright (c) 2026
+ */
+
 #ifndef PROCESS_HPP
 #define PROCESS_HPP
 
 #include <stddef.h>
 #include <stdint.h>
 
+/**
+ * @class Process
+ * @brief Represents a single thread of execution (Task).
+ * * Each Process object manages its own private stack memory. It stores the 
+ * saved CPU context (registers R0-R31, SREG, etc.) during context switches 
+ * performed by the Kernel.
+ */
+
 class Process final {
 public: 
-    enum class State : uint8_t { 
+    enum class State : uint8_t {                            //Posible states of a process   
         READY, 
         RUNNING, 
         BLOCKED,
@@ -15,25 +35,25 @@ public:
     };
 
 private:
-  using TaskFunction = void (*)();  //function Ptr 
+  using TaskFunction = void (*)();                          //function Ptr 
 
   static constexpr uint16_t STACK_SIZE{128};
 
-  static uint8_t PID;
+  static uint8_t PID;                                       //Process id
 
-private:
+private:                                                    //Members 
   TaskFunction m_task;
 
-  uint8_t m_stack[STACK_SIZE]; // static size of 128 words
-  uint8_t* m_sp;
+  uint8_t m_stack[STACK_SIZE];                              // static size of 128 words
+  uint8_t* m_sp;                                            // ptr to stack 
 
   State m_state;
 
   uint8_t m_pid;
   uint8_t m_priority;
 
-  uint16_t m_deltaTicks { 0 };        //Relative time to previous process 
-  Process* m_nextSleeper { nullptr };       //Ptr to linked list delta queue 
+  uint16_t m_deltaTicks { 0 };                              //Relative time to previous process (Used for not waste CPU time sleeping the process) 
+  Process* m_nextSleeper { nullptr };                       //Ptr to linked list delta queue 
 
 public:
   // Constructor
@@ -47,7 +67,7 @@ public:
 
   //Getters and Setters
   uint8_t* getSP() const { return m_sp; }
-  uint8_t** getSPaddress() {return &m_sp; }             //ptr to ptr
+  uint8_t** getSPaddress() {return &m_sp; }                 //ptr to ptr
   void setSP(uint8_t* sp) { m_sp = sp; }
 
   uint8_t getPID() const { return m_pid; }
