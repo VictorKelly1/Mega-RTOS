@@ -1,3 +1,12 @@
+/*
+ * @file Mutex.hpp
+ * @author Victor Kelly 
+ * @brief Mutual Exclusion primitive for task synchronization.
+ * This class prevents race conditions by ensuring that only one task can 
+ * access a shared resource at a time. It manages a waiting list to block 
+ * tasks, preventing wasted CPU cycles during contention.
+*/
+
 #ifndef MUTEX_HPP
 #define MUTEX_HPP
 
@@ -5,6 +14,13 @@
 #include "kernel/Process.hpp"
 #include "kernel/CriticalSection.hpp"
 
+/*
+ * @class Mutex
+ * @brief Synchronization primitive for protecting shared resources.
+ * Implements a "Lock/Unlock" mechanism. If a resource is already owned, 
+ * the requesting task is moved to a WAITING_MUTEX state and added to 
+ * a linked list until the resource is released.
+*/
 class Mutex final {
 private:
     Process* m_owner;                   //Ptr to process who has the resource 
