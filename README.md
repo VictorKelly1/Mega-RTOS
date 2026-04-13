@@ -86,6 +86,7 @@ make
 # 👨‍💻 Author
 Victor Computer Science Egineer Specializing in Embedded Systems and Low-Level C++ Development.
 
-# ▶️ Link to example video soon...
+# ▶️ Link to example video here
+https://www.youtube.com/watch?v=oiDaVDYx4aQ
 # 📑 Documentation soon... 
 
