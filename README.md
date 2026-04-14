@@ -15,6 +15,7 @@ megaRTOS is a lightweight, open source, preemptive Real-Time Operating System (R
 5- Static Library Distribution: Optimized for easy integration as a precompiled .a file.
 
 # 📂 Project Structure
+```text
 .
 ├── include/           # Public Header files (The API)
 │   ├── kernel/        # Kernel, Mutex, and Process headers
@@ -24,6 +25,7 @@ megaRTOS is a lightweight, open source, preemptive Real-Time Operating System (R
 ├── src/               # RTOS Source code
 ├── examples/          # Demo applications
 └── CMakeLists.txt     # Library build system
+```
 
 # 🛠️ Getting Started (Using the Precompiled Library)
 If you only need the implementation...
@@ -42,10 +44,10 @@ Extract the headers from the include/ folder and place them in your project.
 Option 2: Via Terminal (Recommended for Developers)
 If you want to have the full environment and examples, clone the repository:
 
-Bash
+```bash
 git clone https://github.com/tu-usuario/RTOS.git
 cd RTOS
-
+```
 If you want all the code, you don't need to compile the entire RTOS kernel to use it. You can link your project against the precompiled libmegaRTOS.a.
 
 # 1. Requirements
@@ -55,7 +57,7 @@ If you want all the code, you don't need to compile the entire RTOS kernel to us
 # 2. Manual Compilation
 To compile your own main.cpp using the megaRTOS library, run:
 
-Bash
+```Bash
 
 #Compile and link
 avr-g++ -mmcu=atmega328p -Os -I./include main.cpp -L./lib -lmegaRTOS -o firmware.elf
@@ -63,7 +65,7 @@ avr-g++ -mmcu=atmega328p -Os -I./include main.cpp -L./lib -lmegaRTOS -o firmware
 avr-objcopy -O ihex firmware.elf firmware.hex
 #Flash to Arduino Uno
 avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex
-
+```
 # 📋 Basic Usage Example in:
 ├── examples/          # Demo applications
 
@@ -78,11 +80,11 @@ avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex
 
 # 🏗️ Building the Library from Source
 If you wish to modify the kernel and rebuild the static library you can:
-
+```bash
 mkdir build && cd build
 cmake ..
 make
-
+```
 # 👨‍💻 Author
 Victor Computer Science Egineer Specializing in Embedded Systems and Low-Level C++ Development.
 
