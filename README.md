@@ -66,6 +66,28 @@ avr-objcopy -O ihex firmware.elf firmware.hex
 #Flash to Arduino Uno
 avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex
 ```
+# 🐞 Integrating with Microchip Studio
+Follow these steps to link the precompiled megaRTOS library to your project:
+
+1. File Setup
+-Place the library files in your project directory as follows:
+-Copy libmegaRTOS.a into a /lib folder.
+-Copy all .h files into an /include folder.
+
+2. Header Configuration
+-Right-click your project in Solution Explorer → Properties.
+-Navigate to Toolchain → AVR/GNU Compiler → Directories.
+-Add the path to your /include folder.
+
+3. Linker Configuration
+-In the same Properties window, go to Toolchain → AVR/GNU Linker → Libraries:
+-Libraries (-l): Add megaRTOS (do not include the lib prefix or .a extension).
+-Library search path (-L): Add the path to your /lib folder.
+
+4. Code Implementation
+-Ensure your project is set to ATmega328P and the F_CPU matches your hardware (typically 16000000L).
+-Was compiled for the avr5 architecture.
+
 # 📋 Basic Usage Example in:
 ├── examples/          # Demo applications
 
