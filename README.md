@@ -67,24 +67,24 @@ avr-objcopy -O ihex firmware.elf firmware.hex
 avrdude -c arduino -p m328p -P /dev/ttyUSB0 -b 115200 -U flash:w:firmware.hex
 ```
 # 🐞 Integrating with Microchip Studio
-Follow these steps to link the precompiled megaRTOS library to your project:
-1- Project Type
-Create a GCC C++ Executable Project. This ensures the IDE uses avr-g++ and supports C++17 features, classes, and references.
+Follow these steps to integrate the precompiled library (compiled for avr5 architecture) into your project:
 
-2- Project Properties (Alt + F7)
-Compiler Directories: Add ../include and ../include/kernel to AVR/GNU C++ Compiler -> Directories.
-Language Standard: Add -std=c++17 to AVR/GNU C++ Compiler -> Miscellaneous (Other flags).
-Optimization: Set to Optimize for size (-Os) under AVR/GNU C++ Compiler -> Optimization.
+1. Project Setup
+-Type: Create a GCC C++ Executable Project to ensure avr-g++ support.
+-Hardware: Set device to ATmega328P and ensure F_CPU matches your clock (e.g., 16000000L).
 
-4-Linker Configuration
-Library Name: Add megaRTOS (omit lib prefix and .a extension) to AVR/GNU C++ Linker -> Libraries -> Libraries (-l).
-Search Path: Add the path to your /lib folder to Library search path (-L).
+2. Compiler Properties (Alt + F7)
+-Directories: Add ../include and ../include/kernel to AVR/GNU C++ Compiler -> Directories.
+-Optimization: Set to Optimize for size (-Os).
+-Language Standard: Add -std=c++17 to AVR/GNU C++ Compiler -> Miscellaneous.
 
-5- Code Implementation
-Use #include <avr/io.h> instead of xc.h for better C++ compatibility.
-Ensure your main file is named main.cpp.
-Ensure your project is set to ATmega328P and the F_CPU matches your hardware (typically 16000000L).
-Was compiled for the avr5 architecture.
+3. Linker Configuration
+-Libraries (-l): Add megaRTOS (omit lib prefix and .a extension).
+-Search Path (-L): Add the path to your /lib folder.
+
+4. Implementation
+-Entry Point: Ensure your main file is named main.cpp.
+-Headers: Use #include <avr/io.h> instead of xc.h for full C++ compatibility.
 
 # 📋 Basic Usage Example in:
 ├── examples/          # Demo applications
