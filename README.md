@@ -79,8 +79,8 @@ Follow these steps to integrate the precompiled library (compiled for avr5 archi
 -Language Standard: Add -std=c++17 to AVR/GNU C++ Compiler -> Miscellaneous.
 
 3. Linker Configuration
--Libraries (-l): Add megaRTOS (omit lib prefix and .a extension).
--Search Path (-L): Add the path to your /lib folder.
+-Libraries (-l): Add megaRTOS (omit lib prefix and .a extension) and the path below in AVR/GNU Linker -> Directories.
+-Search Path (-L): Add the path to your /lib folder in AVR/GNU Linker -> Libreries.
 
 4. Implementation
 -Entry Point: Ensure your main file is named main.cpp.
