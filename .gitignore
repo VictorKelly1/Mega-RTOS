@@ -16,3 +16,6 @@ compile_commands.json
 
 # Archivos de sistema
 .DS_Store
+
+# Documetation
+doc/

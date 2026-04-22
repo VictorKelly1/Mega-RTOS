@@ -9,6 +9,7 @@
 #ifndef KERNEL_HPP
 #define KERNEL_HPP
 
+#include <avr/io.h>
 #include <stdint.h>
 
 #include "Process.hpp"
@@ -29,6 +30,8 @@
      * @brief Deleted copy constructor and assignment operator to enforce Singleton pattern.
 */
 
+extern "C" void TIMER0_COMPA_vect(void) __attribute__ ((signal));
+
 class Kernel final
 {
 public:
@@ -38,27 +41,34 @@ public:
     Kernel& operator=(const Kernel&) = delete;
 
     //Func declarations
-    void createTask(void (*taskFunction)(), uint8_t priority);
-    void scheduler();
-    void switchContext(Process* next);
+    void createTask(void (*taskFunction)(), uint8_t priority); 
     void start();
-    void initTimer0();
+    //void initTimer0();// 
 
-    static void idleTask();
+    //static void idleTask();// 
     //CPU cicles functions 
-    void updateSleepers();
+    //void updateSleepers();// 
     void delay(uint16_t ms);
+
+    //Getters / setters
+    Process* getCurrentProcess() const { return m_currentProcess; } 
+    void setCurrentProcess(Process* newProcess) { m_currentProcess = newProcess; } 
+
+    uint8_t getProcessCount() const { return m_processCount; }
+private:         //Not usable functions for user 
+    static void idleTask();
+
+    void updateSleepers();
+    void scheduler();
+    void initTimer0();
 
     //I/O functions
     void blockCurrentProcess();
     void wakeProcess(Process* process);
 
-    //Getters / setters
-    Process* getCurrentProcess() const { return m_currentProcess; }
-    void setCurrentProcess(Process* newProcess) { m_currentProcess = newProcess; }
-
-    uint8_t getProcessCount() const { return m_processCount; }
-
+    friend void TIMER0_COMPA_vect(void);
+    friend class UART; 
+    friend class Mutex;
 private:
 
     static Kernel instance;
