@@ -111,4 +111,7 @@ Victor Computer Science Egineer Specializing in Embedded Systems and Low-Level C
 # ▶️ Link to example video here
 https://www.youtube.com/watch?v=oiDaVDYx4aQ
 # 📑 Documentation soon... 
+You can find the user manual here:
+👉 [**Download megaRTOS Manual (PDF)**](documentation.pdf)
+Code Tech manual soon...
 
