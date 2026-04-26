@@ -85,8 +85,9 @@ Follow these steps to integrate the precompiled library (compiled for avr5 archi
 4. Implementation
 -Entry Point: Ensure your main file is named main.cpp.
 -Headers: Use #include <avr/io.h> instead of xc.h for full C++ compatibility.
- ▶️ Tutorial video Eng soon...
- ▶️ [**Video tutorial de como incluir en Microchip Studio es Español**]([documentation.pdf](https://youtu.be/hwTDirRs0IE))
+                                                                                                                                              
+ ▶️ Tutorial video Eng soon...                                                                                                                
+ ▶️ [**Video tutorial de como incluir en Microchip Studio es Español**](https://youtu.be/hwTDirRs0IE)
 
 # 📋 Basic Usage Example in:
 ├── examples/          # Demo applications
