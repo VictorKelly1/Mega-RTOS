@@ -14,6 +14,12 @@ megaRTOS is a lightweight, open source, preemptive Real-Time Operating System (R
 
 5- Static Library Distribution: Optimized for easy integration as a precompiled .a file.
 
+# 🏗️ Future features
+1 - yield() functiona function that yields CPU time from one task to another when convenient
+2 - criticalProcess() function - A function for a critical event that executes upon receiving I/O.
+3 - I2C and CAN drivers - controllers for non-blocking I/O wait protocols
+4 - update in createTask() -initialize the process stack with different sizes
+
 # 📂 Project Structure
 ```text
 .
@@ -86,7 +92,7 @@ Follow these steps to integrate the precompiled library (compiled for avr5 archi
 -Entry Point: Ensure your main file is named main.cpp.
 -Headers: Use #include <avr/io.h> instead of xc.h for full C++ compatibility.
                                                                                                                                               
- ▶️ Tutorial video Eng soon...                                                                                                                
+ ▶️ Tutorial video English soon...                                                                                                                
  ▶️ [**Video tutorial de como incluir en Microchip Studio es Español**](https://youtu.be/hwTDirRs0IE)
 
 # 📋 Basic Usage Example in:
